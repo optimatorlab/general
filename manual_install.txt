@@ -52,14 +52,6 @@ https://slack.com/downloads/linux
 
 	sudo apt-get install python-rosinstall
 
-	pico ~/.bashrc
-	
-	# Edit .bashrc to make sure the following 3 lines are there:
-	# Set ROS Environment Variables:
-	source /opt/ros/indigo/setup.bash
-	source ~/catkin_ws/devel/setup.bash
-	
-	source ~/.bashrc
 	
 	# Create catkin workspace:
 	mkdir -p ~/catkin_ws/src
@@ -69,6 +61,16 @@ https://slack.com/downloads/linux
 	cd ~/catkin_ws/
 	catkin_make	
 	
+
+	pico ~/.bashrc
+	
+	# Edit .bashrc to make sure the following 3 lines are there:
+		# Set ROS Environment Variables:
+		source /opt/ros/indigo/setup.bash
+		source ~/catkin_ws/devel/setup.bash
+	
+	source ~/.bashrc
+
 
 2) Rosbridge.
 	cd ~

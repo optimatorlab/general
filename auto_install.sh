@@ -87,28 +87,26 @@ sudo apt-get --yes install ros-indigo-desktop-full
 sudo rosdep init
 rosdep update
 	
+echo "" >> ${HOME}/.bashrc
 echo "# Set ROS Environment Variables:" >> ${HOME}/.bashrc
 echo "source /opt/ros/indigo/setup.bash" >> ${HOME}/.bashrc
+source /opt/ros/indigo/setup.bash
 source ${HOME}/.bashrc
 
 sudo apt-get --yes install python-rosinstall
-
-# Edit .bashrc:
-# Set ROS Environment Variables:
-echo "source ~/catkin_ws/devel/setup.bash" >> ${HOME}/.bashrc
-sleep 3s
-source ${HOME}/.bashrc		
 		
 # Create catkin workspace:
 mkdir -p ${HOME}/catkin_ws/src
-cd ${HOME}/catkin_ws/src	
 	
 # Build the workspace:
 cd ${HOME}/catkin_ws
-sleep 3s
+catkin_make	
+
+# Edit .bashrc again:
+# Set ROS Environment Variables:
+echo "source ~/catkin_ws/devel/setup.bash" >> ${HOME}/.bashrc
+source ${HOME}/catkin_ws/devel/setup.bash
 source ${HOME}/.bashrc		
-/opt/ros/indigo/bin/catkin_make	
-# THIS FAILED
 
 
 
