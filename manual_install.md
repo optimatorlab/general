@@ -71,8 +71,11 @@ catkin_make
 ```
 
 #### Edit .bashrc to make sure the following 3 lines are there:
-> # Set ROS Environment Variables:
+
+> \# Set ROS Environment Variables:
+
 > source /opt/ros/indigo/setup.bash
+
 > source ~/catkin_ws/devel/setup.bash
 
 ```
@@ -80,91 +83,98 @@ pico ~/.bashrc
 source ~/.bashrc
 ```
 
-## 2) Install Rosbridge.
-	```
-	cd ~
-	sudo apt-get install ros-indigo-rosbridge-suite
-	```
-	
-	#### Double-check that 
-	> source /opt/ros/indigo/setup.bash
-	is in ~/.bashrc
-	
-	(it should've been added when ROS was installed)
+## 2) Install Rosbridge:
+
+```
+cd ~
+sudo apt-get install ros-indigo-rosbridge-suite
+```
+
+#### Double-check that 
+
+> source /opt/ros/indigo/setup.bash
+
+is in ~/.bashrc.  (it should've been added when ROS was installed)
 
 
-## 3) pymavlink
-See http://qgroundcontrol.org/mavlink/pymavlink
+## 3) pymavlink:
 
-	#### Add the following 2 lines to .bashrc:
-	> # Add mavlink to PYTHONPATH
-	> export PYTHONPATH=${PYTHONPATH}:$HOME/mavlink
-	
-	```
-	source .bashrc
-	```
-	
-	#### Mavlink is now using some Python 3 stuff.  Need to install `future`:
-	```
-		sudo apt-get update
-		sudo apt-get install python-pip
-		sudo pip install future
-	```
-	
-	#### Now, install pymavlink:
-	```
-	cd ~
-	git clone git://github.com/optimatorlab/mavlink.git --recursive	
-	cd ~/mavlink/pymavlink
-	sudo python setup.py install
-	```
-	
-	###### NOTE: We have forked from git://github.com/mavlink/mavlink.git
+- See http://qgroundcontrol.org/mavlink/pymavlink
 
-## 4) MAVproxy 
-See https://github.com/Dronecode/MAVProxy
-See http://ardupilot.github.io/MAVProxy/html/getting_started/download_and_installation.html
+#### Add the following 2 lines to .bashrc:
 
-	```
-	sudo apt-get install python-dev python-opencv python-wxgtk2.8 python-pip python-matplotlib python-pygame python-lxml
-	```
-	
-	```
-	cd ~
-	git clone https://github.com/optimatorlab/MAVProxy
-	cd ~/MAVProxy
-	sudo python setup.py install
-	```
-	
-	```
-	sudo adduser ${USER} dialout
-	```
-	
-	###### NOTE:  Before forking to our repository, we used `sudo pip install MAVProxy`
+> # Add mavlink to PYTHONPATH
+
+> export PYTHONPATH=${PYTHONPATH}:$HOME/mavlink
+
+```
+source .bashrc
+```
+
+#### Mavlink is now using some Python 3 stuff.  Need to install `future`:
+```
+sudo apt-get update
+sudo apt-get install python-pip
+sudo pip install future
+```
+
+#### Now, install pymavlink:
+```
+cd ~
+git clone git://github.com/optimatorlab/mavlink.git --recursive	
+cd ~/mavlink/pymavlink
+sudo python setup.py install
+```
+
+###### NOTE: We have forked from git://github.com/mavlink/mavlink.git
+
+## 4) MAVproxy: 
+
+- See https://github.com/Dronecode/MAVProxy
+
+- See http://ardupilot.github.io/MAVProxy/html/getting_started/download_and_installation.html
+
+```
+sudo apt-get install python-dev python-opencv python-wxgtk2.8 python-pip python-matplotlib python-pygame python-lxml
+```
+
+```
+cd ~
+git clone https://github.com/optimatorlab/MAVProxy
+cd ~/MAVProxy
+sudo python setup.py install
+```
+
+```
+sudo adduser ${USER} dialout
+```
+
+###### NOTE:  Before forking to our repository, we used `sudo pip install MAVProxy`
 
 
-## 5) Dronekit
-See http://python.dronekit.io/guide/quick_start.html
+## 5) Dronekit:
 
-	```
-	sudo apt-get install python-pip python-dev
-	```
-	
-	```
-	cd ~
-	git clone https://github.com/optimatorlab/dronekit-python
-	cd ~/dronekit-python
-	sudo python setup.py install
-	```
-	
-	```
-	cd ~
-	git clone https://github.com/optimatorlab/dronekit-sitl
-	cd ~/dronekit-sitl
-	sudo python setup.py install
-	```
-	
-	###### NOTE: Before forking to our repository, we used `sudo pip install dronekit` and `sudo pip install dronekit-sitl`
+- See http://python.dronekit.io/guide/quick_start.html
+
+```
+sudo apt-get install python-pip python-dev
+```
+
+```
+cd ~
+git clone https://github.com/optimatorlab/dronekit-python
+cd ~/dronekit-python
+sudo python setup.py install
+```
+
+```
+cd ~
+git clone https://github.com/optimatorlab/dronekit-sitl
+cd ~/dronekit-sitl
+sudo python setup.py install
+```
+
+###### NOTE: Before forking to our repository, we used `sudo pip install dronekit` and `sudo pip install dronekit-sitl`
 	
 
 ## 6a) Cesium -- Master Branch:
