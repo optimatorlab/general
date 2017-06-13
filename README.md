@@ -1,2 +1,2 @@
-# first-batch
+# general
 Our first repository
