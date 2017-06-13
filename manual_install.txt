@@ -175,6 +175,14 @@ https://slack.com/downloads/linux
 		node server.js
 	
 	9) If it tells you that a server is running locally, everything is running properly. Close out of the server by hitting Ctrl-C
+
+	10) Install Chart.js
+		cd ${HOME}/cesium
+		git clone https://github.com/optimatorlab/Chart.js.git
+		# This will save a directory named ~/cesium/Chart.js
+		npm install chart.js --save 
+		# This will install/save to ~/cesium/node_modules/chart.js
+		rm -r ${HOME}/cesium/Chart.js
 	
 
 6b) Cesium -- 3D Tiles Branch 
@@ -201,7 +209,14 @@ https://slack.com/downloads/linux
 		npm run build
 		npm run minifyRelease
 
-
+	4) Install Chart.js
+		cd ${HOME}/cesium-3d-tiles
+		git clone https://github.com/optimatorlab/Chart.js.git
+		# This will save a directory named ~/cesium-3d-tiles/Chart.js
+		npm install chart.js --save 
+		# This will install/save to ~/cesium-3d-tiles/node_modules/chart.js
+		rm -r ${HOME}/cesium-3d-tiles/Chart.js
+	
 
 7) jMAVsim
 	a. Install Java SDK (v1.7.0_95):

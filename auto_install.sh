@@ -172,6 +172,14 @@ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 sudo apt-get install -y nodejs
 npm install
 
+cd ${HOME}/cesium
+git clone https://github.com/optimatorlab/Chart.js.git
+# This will save a directory named ~/cesium/Chart.js
+npm install chart.js --save 
+# This will install/save to ~/cesium/node_modules/chart.js
+rm -r ${HOME}/cesium/Chart.js
+
+
 # 6b) Cesium -- 3D Tiles Branch:  https://github.com/optimatorlab/cesium/tree/3d-tiles
 cd ${HOME}
 git clone -b 3d-tiles --single-branch git://github.com/optimatorlab/cesium cesium-3d-tiles
@@ -180,6 +188,14 @@ cd ${HOME}/cesium-3d-tiles
 npm install
 npm run build
 npm run minifyRelease
+
+cd ${HOME}/cesium-3d-tiles
+git clone https://github.com/optimatorlab/Chart.js.git
+# This will save a directory named ~/cesium-3d-tiles/Chart.js
+npm install chart.js --save 
+# This will install/save to ~/cesium-3d-tiles/node_modules/chart.js
+rm -r ${HOME}/cesium-3d-tiles/Chart.js
+
 # ===============================================================================================
 
 
