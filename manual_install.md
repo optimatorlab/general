@@ -179,11 +179,11 @@ cd ~
 mkdir cesium
 ```
 		
-        - Go to http://cesiumjs.org/tutorials/cesium-up-and-running/
-        - In the "Downloading a Cesium release" section, click on the blue button titled Cesium-(version).zip ...choose to open that file in archive manager
-        - In archive manager, extract that .zip file into your new cesium directory which you made in step (1) ...make sure to select "extract all"
-        - Go to https://github.com/optimatorlab/cesium
-        - Download the content from the "roslib", "leaflet", and "images" directories.  Save these directories within ~/cesium/
+- Go to http://cesiumjs.org/tutorials/cesium-up-and-running/
+- In the "Downloading a Cesium release" section, click on the blue button titled Cesium-(version).zip ...choose to open that file in archive manager
+- In archive manager, extract that .zip file into your new cesium directory which you made in step (1) ...make sure to select "extract all"
+- Go to https://github.com/optimatorlab/cesium
+- Download the content from the "roslib", "leaflet", and "images" directories.  Save these directories within ~/cesium/
 		
 
     2. **FOR THE LAB'S VERSION:**
@@ -452,6 +452,7 @@ mv ~/Desktop/dic.txt ~/.config/blather/language/dic
 cd ~/blather
 ./Blather.py
 ```		
+
 say "hello world"
     
     - Notes from the code originator:
