@@ -26,6 +26,6 @@ chmod +x *.sh
 - If/when prompted to remove write-protected regular files, you may enter "Y" (without the quotes).
 
 ### If you want to do the manual install:
-Open [manual_install.txt](manual_install.txt) and follow the instructions.
+Open [manual_install.md](manual_install.md) and follow the instructions.
 
 
