@@ -21,7 +21,7 @@ This document explains how to manually install the software required for our HIT
 8. Speech Recognition and Text-to-Speech
 
 
-## These are nice to have on your machine:
+## 0) These are nice to have on your machine:
 Open a terminal and enter the following commands:
 ```
 sudo apt-get install chromium-browser
@@ -40,7 +40,7 @@ You may also want to download the Slack desktop client:
 
 These steps are mostly copied from http://wiki.ros.org/indigo/Installation/Ubuntu
 
-	```
+```
 	sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 	
 	sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
@@ -78,7 +78,7 @@ These steps are mostly copied from http://wiki.ros.org/indigo/Installation/Ubunt
 	```
 	pico ~/.bashrc	
 	source ~/.bashrc
-	```
+```
 
 ## 2) Install Rosbridge.
 	```
