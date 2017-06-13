@@ -103,7 +103,7 @@ is in ~/.bashrc.  (it should've been added when ROS was installed)
 
 #### Add the following 2 lines to .bashrc:
 
-> # Add mavlink to PYTHONPATH
+> \# Add mavlink to PYTHONPATH
 
 > export PYTHONPATH=${PYTHONPATH}:$HOME/mavlink
 
@@ -131,21 +131,16 @@ sudo python setup.py install
 ## 4) MAVproxy: 
 
 - See https://github.com/Dronecode/MAVProxy
-
 - See http://ardupilot.github.io/MAVProxy/html/getting_started/download_and_installation.html
 
 ```
 sudo apt-get install python-dev python-opencv python-wxgtk2.8 python-pip python-matplotlib python-pygame python-lxml
-```
 
-```
 cd ~
 git clone https://github.com/optimatorlab/MAVProxy
 cd ~/MAVProxy
 sudo python setup.py install
-```
 
-```
 sudo adduser ${USER} dialout
 ```
 
@@ -158,16 +153,12 @@ sudo adduser ${USER} dialout
 
 ```
 sudo apt-get install python-pip python-dev
-```
 
-```
 cd ~
 git clone https://github.com/optimatorlab/dronekit-python
 cd ~/dronekit-python
 sudo python setup.py install
-```
 
-```
 cd ~
 git clone https://github.com/optimatorlab/dronekit-sitl
 cd ~/dronekit-sitl
@@ -181,11 +172,12 @@ sudo python setup.py install
 1. If `~/cesium` already exists, rename it to something else (as a backup)
 	
 2. Choose **ONE** of the following approaches:
-    a.  **FOR THE LATEST RELEASE:**
-		```
-		cd ~
-		mkdir cesium
-		```
+    1.  **FOR THE LATEST RELEASE:**
+
+```
+cd ~
+mkdir cesium
+```
 		
         - Go to http://cesiumjs.org/tutorials/cesium-up-and-running/
         - In the "Downloading a Cesium release" section, click on the blue button titled Cesium-(version).zip ...choose to open that file in archive manager
@@ -194,38 +186,45 @@ sudo python setup.py install
         - Download the content from the "roslib", "leaflet", and "images" directories.  Save these directories within ~/cesium/
 		
 
-    b. **FOR THE LAB'S VERSION:**
-		```
-		cd ${HOME}
-		git clone -b master --single-branch git://github.com/optimatorlab/cesium cesium
-		```
+    2. **FOR THE LAB'S VERSION:**
+
+```
+cd ${HOME}
+git clone -b master --single-branch git://github.com/optimatorlab/cesium cesium
+```
 
 3. In a new terminal, issue the following command to update linux:
+
 ```
 sudo apt-get update
 ```
 	
 4. In a new terminal, change directories to ~/cesium:
+
 ```
 cd ~/cesium/
 ```
 	
 5. Issue the following command to download node (note that this will only work if you are in the ~/cesium directory):
+
 ```
 curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 ```
 	
 6. Issue the following command (note that this will only work if you are in the ~/cesium directory):
+
 ```
 sudo apt-get install -y nodejs
 ```
 	
 7. Execute the following command (note that this will only work if you are in the ~/cesium directory).  This will create a folder named 'node_modules'. 
+
 ```
 npm install
 ```
 	
 8. Install should be complete. To check if you can open a server:
+
 ```
 cd ~/cesium
 node server.js
@@ -234,6 +233,7 @@ node server.js
 If it tells you that a server is running locally, everything is running properly. Close out of the server by hitting `Ctrl-C`
 
 9. Install Chart.js
+
 ```
 cd ${HOME}/cesium
 git clone https://github.com/optimatorlab/Chart.js.git
@@ -248,22 +248,25 @@ rm -r ${HOME}/cesium/Chart.js
 1. If `~/cesium-3d-tiles` already exists, rename it to something else (as a backup)
 
 2. Choose **ONE** of the following approaches:
-    a.  **FOR THE LATEST RELEASE:**
-		```
-		cd ~
-		mkdir cesium-3d-tiles
-		```
+    1.  **FOR THE LATEST RELEASE:**
+
+```
+cd ~
+mkdir cesium-3d-tiles
+```
 		
         - Download the .zip archive from:  https://github.com/AnalyticalGraphicsInc/cesium/tree/3d-tiles
         - Extract the .zip archive into cesium-3d-tiles
 
-    b.  **FOR THE LAB'S VERSION:**
-		```
-		cd ${HOME}
-		git clone -b 3d-tiles --single-branch git://github.com/optimatorlab/cesium cesium-3d-tiles
-		```
+    2.  **FOR THE LAB'S VERSION:**
+
+```
+cd ${HOME}
+git clone -b 3d-tiles --single-branch git://github.com/optimatorlab/cesium cesium-3d-tiles
+```
 
 3. Run these commands:
+
 ```
 cd ~/cesium-3d-tiles
 npm install
@@ -272,6 +275,7 @@ npm run minifyRelease
 ```
 
 4. Install Chart.js
+
 ```
 cd ${HOME}/cesium-3d-tiles
 git clone https://github.com/optimatorlab/Chart.js.git
@@ -282,17 +286,21 @@ rm -r ${HOME}/cesium-3d-tiles/Chart.js
 ```	
 
 ## 7) jMAVsim
+
 a. Install Java SDK (v1.7.0_95):
+
 ```
 sudo apt-get install openjdk-7-jdk
 ```
 
 b. Install ant (v1.9.3):
+
 ```
 sudo apt-get install ant
 ```
 
 c. Get jMAVSim -- (Originally from https://github.com/DrTon/jMAVSim)
+
 ```
 cd ~ 
 git clone https://github.com/optimatorlab/jMAVSim
@@ -302,7 +310,8 @@ git submodule update
 ```
 
 d.  **NOTE:  STEP (d) IS NO LONGER REQUIRED.**  I'm leaving it here just in case we need to revisit this in the future.
-	> # Edit jMAVSim Configs: 
+
+	> \# Edit jMAVSim Configs: 
 	> cd ~/jMAVSim/src/me/drton/jmavsim
 	> Open “Simulator.java” 
 	> Find this line of code in “Simulator.java”:
@@ -317,12 +326,14 @@ d.  **NOTE:  STEP (d) IS NO LONGER REQUIRED.**  I'm leaving it here just in case
 	> You may also change the default starting location (GPS coords). 
 				
 e. Compile jMAVSim:
+
 ```
 cd ~/jMAVSim
 ant
 ```
 
 f. modemmanager interferes with any non-modems and should be removed.
+
 ```
 sudo apt-get remove modemmanager 
 ```	
@@ -377,80 +388,96 @@ sudo pip install pyglet
 
 
 ## Blather
-These instructions are modified (very slightly) from https://github.com/ajbogh/blather:
+These instructions are modified from https://github.com/ajbogh/blather:
 
 ```
 cd ~
 sudo apt-get install python-gst0.10
 sudo apt-get install gstreamer0.10-pocketsphinx
-```
 
-```
 cd ~
 git clone https://github.com/optimatorlab/blather.git
 ```
 
 
-# OPTION 1:  Configure your environment manually:
-    1) move ~/blather/commands.tmp to ~/.config/blather/commands.conf and fill the file with sentences and commands to run
-		mkdir ~/.config/blather/
-		mv ~/blather/commands.tmp ~/.config/blather/commands.conf
-		pico ~/.config/blather/commands.conf
-    2) Run Blather.py, this will generate ~/.config/blather/sentences.corpus based on sentences in the 'commands' file
-		cd ~/blather
-		python Blather.py
-    3) quit blather (there is a good chance it will just segfault)
-    4) go to http://www.speech.cs.cmu.edu/tools/lmtool.html and upload the sentences.corpus file
-		See ~/.config/blather/sentences.corpus
-		This is in a hidden directory, making it difficult to find it for uploading.
-			cp ~/.config/blather/sentences.corpus ~/Desktop/sentences.corpus
-			You may delete ~/Desktop/sentences.corpus after you've uploaded it.
-	
-    5) download the resulting XXXX.lm file to the desktop, and save the file as lm.txt
-    6) download the resulting XXXX.dic file to the desktop, and save the file as dic.txt
+#### OPTION 1:  Configure your environment manually:
+1. Move `~/blather/commands.tmp` to `~/.config/blather/commands.conf` and fill the file with sentences and commands to run:
+
+```
+mkdir ~/.config/blather/
+mv ~/blather/commands.tmp ~/.config/blather/commands.conf
+pico ~/.config/blather/commands.conf
+```
+
+2. Run `Blather.py`, this will generate `~/.config/blather/sentences.corpus` based on sentences in the `commands.conf` file:
+
+```
+cd ~/blather
+python Blather.py
+```
+
+3. Quit blather (there is a good chance it will just segfault)
     
-    7) make a backup of the old lm/dic files:
-		cd ~/.config/blather/language
-		mv lm lm.bak
-		mv dic dic.bak
-		
-	8) move (and rename, with no extension) the downloaded files to the language subdirectory
-		mv ~/Desktop/lm.txt ~/.config/blather/language/lm
-		mv ~/Desktop/dic.txt ~/.config/blather/language/dic
-		
-    9) run Blather.py
+4. Go to http://www.speech.cs.cmu.edu/tools/lmtool.html and upload the `sentences.corpus` file:
 
-		cd ~/blather
-		./Blather.py
-		
-		say "hello world"
+    - See ~/.config/blather/sentences.corpus
+    - This is in a hidden directory, making it difficult to find it for uploading.
+
+```    
+cp ~/.config/blather/sentences.corpus ~/Desktop/sentences.corpus
+```
+
+    - You may delete ~/Desktop/sentences.corpus after you've uploaded it.
+	
+5. Download the resulting XXXX.lm file to the desktop, and save the file as lm.txt
     
-		NOTES:
-        for Qt GUI, run Blather.py -i q
-        for Gtk GUI, run Blather.py -i g
-        to start a UI in 'continuous' listen mode, use the -c flag
-        to use a microphone other than the system default, use the -d flag
+6. Download the resulting XXXX.dic file to the desktop, and save the file as dic.txt
+    
+7. make a backup of the old lm/dic files:
 
-		Bonus:
-			Once the sentences.corpus file has been created, run the language_updater.sh script to automate the process of creating and downloading language files.	
+```
+cd ~/.config/blather/language
+mv lm lm.bak
+mv dic dic.bak
+```
+		
+8. Move (and rename, with no extension) the downloaded files to the language subdirectory:
+```
+mv ~/Desktop/lm.txt ~/.config/blather/language/lm
+mv ~/Desktop/dic.txt ~/.config/blather/language/dic
+```
+		
+9. Run Blather.py:
+```		
+cd ~/blather
+./Blather.py
+```		
+say "hello world"
+    
+    - Notes from the code originator:
+        - for Qt GUI, run Blather.py -i q
+        - for Gtk GUI, run Blather.py -i g
+        - to start a UI in 'continuous' listen mode, use the -c flag 
+        - to use a microphone other than the system default, use the -d flag
+        - Once the sentences.corpus file has been created, run the language_updater.sh script to automate the process of creating and downloading language files.	
 
-# OPTION 2:  Use a standard configuration we created on github
-	mkdir ~/.config/blather
-	mkdir ~/.config/blather/language
-	mkdir ~/.config/blather/plugins
-	
-	cd ~/blather/config/blather
-	mv commands.conf ~/.config/blather/commands.conf
-	mv sentences.corpus ~/.config/blather/sentences.corpus
-	
-	cd ~/blather/config/blather/language
-	mv lm ~/.config/blather/language/lm
-	mv dic ~/.config/blather/language/dic
-	
-	cd ~/blather/config/blather/plugins
-	mv thunderbird.sh ~/.config/blather/plugins/thunderbird.sh
-	
-	
+#### OPTION 2:  Use a standard configuration we created on github:
+```
+mkdir ~/.config/blather
+mkdir ~/.config/blather/language
+mkdir ~/.config/blather/plugins
+
+cd ~/blather/config/blather
+mv commands.conf ~/.config/blather/commands.conf
+mv sentences.corpus ~/.config/blather/sentences.corpus
+
+cd ~/blather/config/blather/language
+mv lm ~/.config/blather/language/lm
+mv dic ~/.config/blather/language/dic
+
+cd ~/blather/config/blather/plugins
+mv thunderbird.sh ~/.config/blather/plugins/thunderbird.sh
+```	
 	
 	
 
@@ -463,9 +490,9 @@ sudo apt-get install espeak
 ```
 
 Or, do it manually:
-	- Open Ubuntu Software Center
-	- Search “Espeak”
-	- Download the first option (Multi-lingual software speech synthesizer)
+- Open Ubuntu Software Center
+- Search “Espeak”
+- Download the first option (Multi-lingual software speech synthesizer)
 
 
 #### Install Mbrola:
@@ -476,14 +503,15 @@ sudo apt-get install mbrola-us2
 ```
 
 Or, do it manually:
-	- Open Ubuntu Software Center
-	- Search “Mbrola”
-	- Download the first and only option (Multilingual software speech synthesizer)
-	- Search "mbrola-us1" and install
-	- Search "mbrola-us2" and install
+- Open Ubuntu Software Center
+- Search “Mbrola”
+- Download the first and only option (Multilingual software speech synthesizer)
+- Search "mbrola-us1" and install
+- Search "mbrola-us2" and install
 
 	
 When giving commands in the terminal window:
+
 ```
 espeak –v mb-us1 –s 180 –p 30 “this text will be read aloud”
 ```	
