@@ -18,7 +18,8 @@ This document explains how to manually install the software required for our HIT
 5. Dronekit
 6. Cesium (master and 3d-tiles branches)	
 7. jMAVsim
-8. Speech Recognition and Text-to-Speech
+8. QGroundControl (allows loading firmware onto the UAVs)
+9. Speech Recognition and Text-to-Speech
 
 
 ## 0) These are nice to have on your machine:
@@ -242,7 +243,24 @@ npm install chart.js --save
 # This will install/save to ~/cesium/node_modules/chart.js
 rm -r ${HOME}/cesium/Chart.js
 ```
-	
+
+10.  Install Dials/Gauges
+
+```
+cd ${HOME}/cesium
+git clone https://github.com/optimatorlab/dials_gauges.git
+```
+
+11.  Install other cesium add-ons
+
+```
+cd ${HOME}/cesium				
+git clone https://github.com/optimatorlab/cesium-addons.git
+mv ${HOME}/cesium/cesium-addons/leaflet ${HOME}/cesium/leaflet
+mv ${HOME}/cesium/cesium-addons/images ${HOME}/cesium/images
+mv ${HOME}/cesium/cesium-addons/roslib ${HOME}/cesium/roslib
+rm -rf ${HOME}/cesium/cesium-addons
+```	
 
 ## 6b) Cesium -- 3D Tiles Branch 
 1. If `~/cesium-3d-tiles` already exists, rename it to something else (as a backup)
@@ -264,6 +282,25 @@ mkdir cesium-3d-tiles
 cd ${HOME}
 git clone -b 3d-tiles --single-branch git://github.com/optimatorlab/cesium cesium-3d-tiles
 ```
+
+3.  Install Dials/Gauges
+
+```
+cd ${HOME}/cesium-3d-tiles
+git clone https://github.com/optimatorlab/dials_gauges.git
+```
+
+4.  Install other cesium add-ons
+
+```
+cd ${HOME}/cesium-3d-tiles
+git clone https://github.com/optimatorlab/cesium-addons.git
+mv ${HOME}/cesium-3d-tiles/cesium-addons/leaflet ${HOME}/cesium-3d-tiles/leaflet
+mv ${HOME}/cesium-3d-tiles/cesium-addons/images ${HOME}/cesium-3d-tiles/images
+mv ${HOME}/cesium-3d-tiles/cesium-addons/roslib ${HOME}/cesium-3d-tiles/roslib
+rm -rf ${HOME}/cesium-3d-tiles/cesium-addons
+```	
+
 
 3. Run these commands:
 
@@ -337,10 +374,24 @@ f. modemmanager interferes with any non-modems and should be removed.
 ```
 sudo apt-get remove modemmanager 
 ```	
-	
-	
+g.  If you have trouble connecting Pixhawk, try the following:
 
-## 8) Speech Recognition and Text-to-Speech
+```
+sudo usermod -a -G dialout $USER
+```	
+
+## 8) QGroundControl
+
+#### This software allows us to load firmware onto the UAVs.
+
+- Visit https://github.com/mavlink/qgroundcontrol/releases/
+- Download version 2.9.3
+- Extract --\> will create "qgroundcontrol" directory in home directory.
+
+Run QGroundControl using `./qgroundcontrol-start.sh`
+
+
+## 9) Speech Recognition and Text-to-Speech
 
 #### Install portaudio19-dev and the python development package (python-all-dev) beforehand. 
 ```

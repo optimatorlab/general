@@ -22,6 +22,7 @@
 #		- ~/jMAVSim
 #		- ~/cesium
 #		- ~/cesium-3d-tiles
+#		- ~/qgroundcontrol
 #		- ~/pyaudio
 #		- ~/blather
 #		- ~/.config/blather/
@@ -140,6 +141,9 @@ sudo python setup.py install
 		
 sudo adduser ${USER} dialout
 
+# If you have trouble connecting Pixhawk, try the following:
+sudo usermod -a -G dialout ${USER}
+
 
 
 # 5) Dronekit
@@ -177,6 +181,18 @@ npm install chart.js --save
 # This will install/save to ~/cesium/node_modules/chart.js
 rm -r ${HOME}/cesium/Chart.js
 
+cd ${HOME}/cesium
+git clone https://github.com/optimatorlab/dials_gauges.git
+
+cd ${HOME}/cesium				
+git clone https://github.com/optimatorlab/cesium-addons.git
+mv ${HOME}/cesium/cesium-addons/leaflet ${HOME}/cesium/leaflet
+mv ${HOME}/cesium/cesium-addons/images ${HOME}/cesium/images
+mv ${HOME}/cesium/cesium-addons/roslib ${HOME}/cesium/roslib
+rm -rf ${HOME}/cesium/cesium-addons
+
+	
+
 
 # 6b) Cesium -- 3D Tiles Branch:  https://github.com/optimatorlab/cesium/tree/3d-tiles
 cd ${HOME}
@@ -193,6 +209,16 @@ git clone https://github.com/optimatorlab/Chart.js.git
 npm install chart.js --save 
 # This will install/save to ~/cesium-3d-tiles/node_modules/chart.js
 rm -r ${HOME}/cesium-3d-tiles/Chart.js
+
+cd ${HOME}/cesium-3d-tiles
+git clone https://github.com/optimatorlab/dials_gauges.git
+
+cd ${HOME}/cesium-3d-tiles
+git clone https://github.com/optimatorlab/cesium-addons.git
+mv ${HOME}/cesium-3d-tiles/cesium-addons/leaflet ${HOME}/cesium-3d-tiles/leaflet
+mv ${HOME}/cesium-3d-tiles/cesium-addons/images ${HOME}/cesium-3d-tiles/images
+mv ${HOME}/cesium-3d-tiles/cesium-addons/roslib ${HOME}/cesium-3d-tiles/roslib
+rm -rf ${HOME}/cesium-3d-tiles/cesium-addons
 
 # ===============================================================================================
 
@@ -219,9 +245,16 @@ ant
 # modemmanager interferes with any non-modems and should be removed.
 sudo apt-get remove modemmanager 
 
+# 8) QGroundControl
+#
+#
+#	FIXME!!!!
+#
+#
+#
 
 
-# 8) Speech Recognition
+# 9) Speech Recognition
 # Install pyaudio
 cd ${HOME}
 git clone https://github.com/optimatorlab/pyaudio.git
@@ -257,3 +290,6 @@ cd ${HOME}/blather/config/blather/plugins
 mv ${HOME}/blather/config/blather/plugins/thunderbird.sh ${HOME}/.config/blather/plugins/thunderbird.sh
 
 
+
+echo "Installation Complete."
+echo "Reboot your machine before running the software."
