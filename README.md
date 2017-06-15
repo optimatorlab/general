@@ -29,3 +29,10 @@ chmod +x *.sh
 Open [manual_install.md](manual_install.md) and follow the instructions.
 
 
+### Troubleshooting
+
+- WebGL on Chromium:
+    - Open Chromium
+    - Type chrome://flags in the address bar
+    - CTRL-f and type "rendering list".  "Override software rendering list" will come up.
+    - Click "Enable" and relaunch the browser (relaunch button appears at bottom of browser).
