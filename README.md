@@ -1,8 +1,9 @@
 # general
 Our first repository
 
-## Requirements:
-- Ubuntu 14.04
+## Versions:
+- ROS Indigo Igloo on Ubuntu 14.04
+- ROS Kinetic Kame on Ubuntu 16.04
 
 ## Instructions:
 1) On the host machine, open a terminal window and enter:
@@ -20,8 +21,9 @@ git clone https://github.com/optimatorlab/general
 ```
 cd general
 chmod +x *.sh
-./auto_install.sh
+./auto_install_xx04.sh
 ```
+replacing "xx" with "14" if you want to install on Ubuntu 14.04, or with "16" for Ubuntu 16.04. 
 
 - If/when prompted to remove write-protected regular files, you may enter "Y" (without the quotes).
 

@@ -182,10 +182,7 @@ mkdir cesium
 		
 - Go to http://cesiumjs.org/tutorials/cesium-up-and-running/
 - In the "Downloading a Cesium release" section, click on the blue button titled Cesium-(version).zip ...choose to open that file in archive manager
-- In archive manager, extract that .zip file into your new cesium directory which you made in step (1) ...make sure to select "extract all"
-- Go to https://github.com/optimatorlab/cesium
-- Download the content from the "roslib", "leaflet", and "images" directories.  Save these directories within ~/cesium/
-		
+- In archive manager, extract that .zip file into your new cesium directory which you made in step (1) ...make sure to select "extract all"		
 
     2. **FOR THE LAB'S VERSION:**
 
@@ -251,17 +248,6 @@ cd ${HOME}/cesium
 git clone https://github.com/optimatorlab/dials_gauges.git
 ```
 
-11.  Install other cesium add-ons
-
-```
-cd ${HOME}/cesium				
-git clone https://github.com/optimatorlab/cesium-addons.git
-mv ${HOME}/cesium/cesium-addons/leaflet ${HOME}/cesium/leaflet
-mv ${HOME}/cesium/cesium-addons/images ${HOME}/cesium/images
-mv ${HOME}/cesium/cesium-addons/roslib ${HOME}/cesium/roslib
-rm -rf ${HOME}/cesium/cesium-addons
-```	
-
 ## 6b) Cesium -- 3D Tiles Branch 
 1. If `~/cesium-3d-tiles` already exists, rename it to something else (as a backup)
 
@@ -290,19 +276,8 @@ cd ${HOME}/cesium-3d-tiles
 git clone https://github.com/optimatorlab/dials_gauges.git
 ```
 
-4.  Install other cesium add-ons
 
-```
-cd ${HOME}/cesium-3d-tiles
-git clone https://github.com/optimatorlab/cesium-addons.git
-mv ${HOME}/cesium-3d-tiles/cesium-addons/leaflet ${HOME}/cesium-3d-tiles/leaflet
-mv ${HOME}/cesium-3d-tiles/cesium-addons/images ${HOME}/cesium-3d-tiles/images
-mv ${HOME}/cesium-3d-tiles/cesium-addons/roslib ${HOME}/cesium-3d-tiles/roslib
-rm -rf ${HOME}/cesium-3d-tiles/cesium-addons
-```	
-
-
-3. Run these commands:
+4. Run these commands:
 
 ```
 cd ~/cesium-3d-tiles
@@ -311,7 +286,7 @@ npm run build
 npm run minifyRelease
 ```
 
-4. Install Chart.js
+5. Install Chart.js
 
 ```
 cd ${HOME}/cesium-3d-tiles
