@@ -160,12 +160,15 @@ sudo usermod -a -G dialout ${USER}
 cd ${HOME}
 git clone https://github.com/optimatorlab/dronekit-python
 cd ${HOME}/dronekit-python
+sudo python setup.py build
 sudo python setup.py install
+			
 				
 # sudo pip install dronekit-sitl
 cd ${HOME}
 git clone https://github.com/optimatorlab/dronekit-sitl
 cd ${HOME}/dronekit-sitl
+sudo python setup.py build
 sudo python setup.py install
 
 
