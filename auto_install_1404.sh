@@ -42,6 +42,12 @@ sudo apt-get update
 
 sudo apt-get --yes install python-dev python-opencv python-wxgtk2.8 python-pip python-matplotlib python-pygame python-lxml
 sudo apt-get --yes install python python-all-dev python-pip build-essential swig git
+sudo apt-get --yes install screen 
+sudo apt-get --yes install python-numpy 
+sudo apt-get --yes install libxml2-dev 
+sudo apt-get --yes install libxslt-dev
+
+
 sudo apt-get --yes install portaudio19-dev 
 sudo apt-get --yes install libpulse-dev
 sudo apt-get --yes install python-gst0.10
@@ -188,23 +194,23 @@ git clone https://github.com/optimatorlab/dials_gauges.git
 
 
 # 6b) Cesium -- 3D Tiles Branch:  https://github.com/optimatorlab/cesium/tree/3d-tiles
-cd ${HOME}
-git clone -b 3d-tiles --single-branch git://github.com/optimatorlab/cesium cesium-3d-tiles
+#cd ${HOME}
+#git clone -b 3d-tiles --single-branch git://github.com/optimatorlab/cesium cesium-3d-tiles
 
-cd ${HOME}/cesium-3d-tiles
-npm install
-npm run build
-npm run minifyRelease
+#cd ${HOME}/cesium-3d-tiles
+#npm install
+#npm run build
+#npm run minifyRelease
 
-cd ${HOME}/cesium-3d-tiles
-git clone https://github.com/optimatorlab/Chart.js.git
-# This will save a directory named ~/cesium-3d-tiles/Chart.js
-npm install chart.js --save 
-# This will install/save to ~/cesium-3d-tiles/node_modules/chart.js
-rm -r ${HOME}/cesium-3d-tiles/Chart.js
+#cd ${HOME}/cesium-3d-tiles
+#git clone https://github.com/optimatorlab/Chart.js.git
+## This will save a directory named ~/cesium-3d-tiles/Chart.js
+#npm install chart.js --save 
+## This will install/save to ~/cesium-3d-tiles/node_modules/chart.js
+#rm -r ${HOME}/cesium-3d-tiles/Chart.js
 
-cd ${HOME}/cesium-3d-tiles
-git clone https://github.com/optimatorlab/dials_gauges.git
+#cd ${HOME}/cesium-3d-tiles
+#git clone https://github.com/optimatorlab/dials_gauges.git
 
 # ===============================================================================================
 
