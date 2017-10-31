@@ -2,7 +2,7 @@
 
 This document explains how to manually install the software required for our HITL and SITL simulators.
 
-* Updated 6/12/2017 by Chase Murray *
+* Updated 10/31/2017 by Chase Murray *
 
 #### NOTES:
 - We are using Ubuntu 14.04 in the lab.  Sometime "soon" we should look to upgrade to 16.04.
@@ -16,7 +16,7 @@ This document explains how to manually install the software required for our HIT
 3. pymavlink
 4. MAVproxy
 5. Dronekit
-6. Cesium (master and 3d-tiles branches)	
+6. Cesium 	
 7. jMAVsim
 8. QGroundControl (allows loading firmware onto the UAVs)
 9. Speech Recognition and Text-to-Speech
@@ -169,7 +169,7 @@ sudo python setup.py install
 ###### NOTE: Before forking to our repository, we used `sudo pip install dronekit` and `sudo pip install dronekit-sitl`
 	
 
-## 6a) Cesium -- Master Branch:
+## 6) Cesium:
 1. If `~/cesium` already exists, rename it to something else (as a backup)
 	
 2. Choose **ONE** of the following approaches:
@@ -184,11 +184,12 @@ mkdir cesium
 - In the "Downloading a Cesium release" section, click on the blue button titled Cesium-(version).zip ...choose to open that file in archive manager
 - In archive manager, extract that .zip file into your new cesium directory which you made in step (1) ...make sure to select "extract all"		
 
-    2. **FOR THE LAB'S VERSION:**
+    2. **FOR THE LAB'S VERSION (1.38):**
 
 ```
-cd ${HOME}
-git clone -b master --single-branch git://github.com/optimatorlab/cesium cesium
+cd ${HOME}/cesium
+wget https://github.com/AnalyticalGraphicsInc/cesium/releases/download/1.38/Cesium-1.38.zip
+unzip Cesium-1.38.zip
 ```
 
 3. In a new terminal, issue the following command to update linux:
@@ -248,54 +249,6 @@ cd ${HOME}/cesium
 git clone https://github.com/optimatorlab/dials_gauges.git
 ```
 
-## 6b) Cesium -- 3D Tiles Branch 
-1. If `~/cesium-3d-tiles` already exists, rename it to something else (as a backup)
-
-2. Choose **ONE** of the following approaches:
-    1.  **FOR THE LATEST RELEASE:**
-
-```
-cd ~
-mkdir cesium-3d-tiles
-```
-		
-        - Download the .zip archive from:  https://github.com/AnalyticalGraphicsInc/cesium/tree/3d-tiles
-        - Extract the .zip archive into cesium-3d-tiles
-
-    2.  **FOR THE LAB'S VERSION:**
-
-```
-cd ${HOME}
-git clone -b 3d-tiles --single-branch git://github.com/optimatorlab/cesium cesium-3d-tiles
-```
-
-3.  Install Dials/Gauges
-
-```
-cd ${HOME}/cesium-3d-tiles
-git clone https://github.com/optimatorlab/dials_gauges.git
-```
-
-
-4. Run these commands:
-
-```
-cd ~/cesium-3d-tiles
-npm install
-npm run build
-npm run minifyRelease
-```
-
-5. Install Chart.js
-
-```
-cd ${HOME}/cesium-3d-tiles
-git clone https://github.com/optimatorlab/Chart.js.git
-# This will save a directory named ~/cesium-3d-tiles/Chart.js
-npm install chart.js --save 
-# This will install/save to ~/cesium-3d-tiles/node_modules/chart.js
-rm -r ${HOME}/cesium-3d-tiles/Chart.js
-```	
 
 ## 7) jMAVsim
 

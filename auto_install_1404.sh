@@ -3,7 +3,7 @@
 # ===============================================================================
 # File:  auto_install_1404.sh
 #
-# Updated 6/20/2017 by Chase Murray
+# Updated 10/31/2017 by Chase Murray
 #
 # NOTES:
 #	* This script installs ROS Indigo Igloo on Ubuntu 14.04.
@@ -23,13 +23,17 @@
 #		- ~/MAVProxy
 #		- ~/jMAVSim
 #		- ~/cesium
-#		- ~/cesium-3d-tiles
 #		- ~/qgroundcontrol
 #		- ~/pyaudio
 #		- ~/blather
 #		- ~/.config/blather/
 #	* MAKE. SURE. YOU. HAVE. BACKUPS.
 # ===============================================================================
+
+# CHANGELOG:
+#	10/31/17:
+#	No longer using cesium-3d-tiles
+#	Pulling Cesium directly from their releases page.
 
 
 
@@ -174,9 +178,15 @@ sudo python setup.py install
 
 
 # ===============================================================================================
-# 6a) Cesium -- Master Branch:
-cd ${HOME}
-git clone -b master --single-branch git://github.com/optimatorlab/cesium cesium
+# 6a) Cesium -- 1.38 (Released Oct. 2, 2017):
+# Delete the cesium directory (if it exists)
+rm -rf ${HOME}/cesium
+
+# Copy/install cesium:
+mkdir ${HOME}/cesium
+cd ${HOME}/cesium
+wget https://github.com/AnalyticalGraphicsInc/cesium/releases/download/1.38/Cesium-1.38.zip
+unzip Cesium-1.38.zip
 
 sudo apt-get update
 

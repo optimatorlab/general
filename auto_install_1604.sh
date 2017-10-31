@@ -3,7 +3,7 @@
 # ===============================================================================
 # File:  auto_install_1604.sh
 #
-# Updated 6/19/2017 by Chase Murray
+# Updated 10/31/2017 by Chase Murray
 #
 # NOTES:
 #	* This script installs the software for ROS Kinetic on Ubuntu 16.04.
@@ -24,7 +24,6 @@
 #		- ~/MAVProxy
 #		- ~/jMAVSim
 #		- ~/cesium
-#		- ~/cesium-3d-tiles
 #		- ~/qgroundcontrol
 #		- ~/pyaudio
 #		- ~/blather
@@ -39,6 +38,9 @@
 #	Replaced "gstreamer0.10-pocketsphinx" with "gstreamer1.0-pocketsphinx"
 #	Added "pip install --upgrade pip"
 #	Replaced "openjdk-7-jdk" with "openjdk-8-jdk"
+#	10/31/17:
+#	No longer using cesium-3d-tiles
+#	Pulling Cesium directly from their releases page.
 
 set -e
 
@@ -66,7 +68,6 @@ sudo apt-get --yes install geany
 sudo apt-get --yes install gimp
 sudo apt-get --yes install meld
 sudo apt-get --yes install kazam
-
 
 sudo apt-get update
 
@@ -177,9 +178,15 @@ sudo python setup.py install
 
 
 # ===============================================================================================
-# 6a) Cesium -- Master Branch:
-cd ${HOME}
-git clone -b master --single-branch git://github.com/optimatorlab/cesium cesium
+# 6a) Cesium -- 1.38 (Released Oct. 2, 2017):
+# Delete the cesium directory (if it exists)
+rm -rf ${HOME}/cesium
+
+# Copy/install cesium:
+mkdir ${HOME}/cesium
+cd ${HOME}/cesium
+wget https://github.com/AnalyticalGraphicsInc/cesium/releases/download/1.38/Cesium-1.38.zip
+unzip Cesium-1.38.zip
 
 sudo apt-get update
 
