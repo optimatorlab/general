@@ -3,7 +3,7 @@
 # ===============================================================================
 # File:  auto_install_1404.sh
 #
-# Updated 10/31/2017 by Chase Murray
+# Updated 12/22/2017 by Chase Murray
 #
 # NOTES:
 #	* This script installs ROS Indigo Igloo on Ubuntu 14.04.
@@ -32,9 +32,10 @@
 
 # CHANGELOG:
 #	10/31/17:
-#	No longer using cesium-3d-tiles
-#	Pulling Cesium directly from their releases page.
-
+#		No longer using cesium-3d-tiles
+#		Pulling Cesium directly from their releases page.
+#	12/22/17:
+#		Added pyserial.  Should be v3.4 or above now.
 
 
 set -e
@@ -59,6 +60,8 @@ sudo apt-get --yes install gstreamer0.10-pocketsphinx
 
 sudo pip install future
 sudo pip install pyglet 
+
+sudo python -m pip install pyserial --upgrade
 
 sudo apt-get --yes install chromium-browser
 sudo apt-get --yes install filezilla

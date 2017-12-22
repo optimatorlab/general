@@ -1,14 +1,13 @@
 # Manual Installation Instructions
 
-This document explains how to manually install the software required for our HITL and SITL simulators.
+This **outdated** document explains how to manually install the software required for our HITL and SITL simulators.
 
-* Updated 10/31/2017 by Chase Murray *
+*Updated 12/22/2017 by Chase Murray*
 
 #### NOTES:
+- **This guide is out-of-date.  I'm leaving it here for references purposes only.  Please use one of the auto-installers.**
 - We are using Ubuntu 14.04 in the lab.  Sometime "soon" we should look to upgrade to 16.04.
-- IF YOU EXPERIENCE ISSUES WITH THESE INSTRUCTIONS,
-	  PLEASE DOCUMENT THE ERRORS YOU'RE GETTING AND CONTACT THE DOCUMENT OWNER.
-	  WE WANT THIS GUIDE TO BE UPDATED AND ACCURATE.
+
 
 #### SUMMARY OF REQUIRED SOFTWARE TO BE INSTALLED:
 1. ROS Indigo Igloo
