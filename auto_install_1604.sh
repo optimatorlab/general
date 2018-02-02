@@ -3,7 +3,7 @@
 # ===============================================================================
 # File:  auto_install_1604.sh
 #
-# Updated 12/22/2017 by Chase Murray
+# Updated 2/2/2018 by Chase Murray
 #
 # NOTES:
 #	* This script installs the software for ROS Kinetic on Ubuntu 16.04.
@@ -43,6 +43,8 @@
 #		Pulling Cesium directly from their releases page.
 #	12/22/17:
 #		Added pyserial.  Should be v3.4 or above now.
+#	2/2/18:
+#		Added -H flag for pip installs
 
 set -e
 
@@ -53,7 +55,7 @@ sudo apt-get update
 
 sudo apt-get --yes install python-dev python-opencv python-wxgtk3.0 python-pip python-matplotlib python-pygame python-lxml
 
-sudo pip install --upgrade pip
+sudo -H pip install --upgrade pip
 
 sudo apt-get --yes install python python-all-dev python-pip build-essential swig git
 sudo apt-get --yes install portaudio19-dev 
@@ -61,8 +63,8 @@ sudo apt-get --yes install libpulse-dev
 sudo apt-get --yes install python-gst-1.0
 sudo apt-get --yes install gstreamer1.0-pocketsphinx
 
-sudo pip install future
-sudo pip install pyglet 
+sudo -H pip install future
+sudo -H pip install pyglet 
 
 sudo python -m pip install pyserial --upgrade
 
@@ -272,11 +274,11 @@ sudo python setup.py install
 
 # Install pocketsphinx
 cd ${HOME}
-sudo pip install pocketsphinx
+sudo -H pip install pocketsphinx
 
 # Install SpeechRecognition 3.4.6
 cd ${HOME}
-sudo pip install SpeechRecognition
+sudo -H pip install SpeechRecognition
 
 
 # Blather -- Originally from https://github.com/ajbogh/blather
