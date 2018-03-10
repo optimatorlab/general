@@ -86,12 +86,12 @@ These steps should be followed just once (e.g., on a fresh installation of Ubunt
 	
 	- If you prefer to edit your `.bashrc` file manually, simply edit that file (e.g., via `nano` or `pico`) and place the following lines at the bottom of the file:
 		
-	```
+		```
 	# Configure virtualenv and virtualenvwrapper
 	export WORKON_HOME=$HOME/.virtualenvs
 	export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 	source /usr/local/bin/virtualenvwrapper.sh
-	```
+		```
 
 	
 		
