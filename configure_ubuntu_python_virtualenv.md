@@ -10,7 +10,7 @@
 - These instructions work for Python 2.7 and Python 3.  You can have multiple virtual environments, some running Python 2.7 and some running Python 3.
 
 
-### The remainder of this guide is presented in 3 parts:
+### The remainder of this guide is presented in 4 parts:
 
 1. **Installing System Packages** -- You need to follow these steps just once.  Afterwards you can create as many virtual environments as you'd like.
 
@@ -202,7 +202,8 @@ In this section we are creating a virtualenv named "dl4cv".
 		import mglearn
 		import scipy
 		import PIL
-		# There should be no *error* messages (you might get some deprecation warnings...we'll ignore for now)
+		# There should be no *error* messages 
+		# (you might get some deprecation warnings...we'll ignore for now)
 	
 		exit()	
 		```
