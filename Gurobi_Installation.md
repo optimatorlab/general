@@ -54,10 +54,14 @@
 	>>> import gurobipy
 	```
 	
-8. (optional)  If you're using Python virtual environments, create a symbolic link from within a particular virtualenv:
+8. (*optional*)  If you're using Python virtual environments...
 
-	```
-	workon <virtualenv_name>
-	cd ~/.virtualenvs/olab2/lib/python2.7/site-packages/		# Change path for your virtualenv
-	ln -s /opt/gurobi751/linux64/lib/python2.7/gurobipy.so		# might need to change path for your version
-	```
+	- To use `gurobipy` within a virtual environment, we'll need to create a symbolic link to the `gurobipy.so` file.
+	
+	- The code below assumes that (1) we have a Python 2.7 virtual environment named `olab2` with a particular path, and (2) we have installed Gurobi 7.5.1 and have found the path to `gurobipy.so`.  **You may need to change these paths as appropriate for your setup.**
+	
+		```
+		workon olab2
+		cd ~/.virtualenvs/olab2/lib/python2.7/site-packages/	
+		ln -s /opt/gurobi751/linux64/lib/python2.7/gurobipy.so	
+		```
