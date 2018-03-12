@@ -49,8 +49,6 @@ The following code should also be on your machine, but it couldn't be automated 
 	# sudo usermod -a -G dialout ${USER}
 	```
 
-	**FIXME** -- Do we want to download to user's home directory?
-
 	```
 	cd ~/Downloads
 	mkdir XCTU
@@ -61,7 +59,13 @@ The following code should also be on your machine, but it couldn't be automated 
 	```
 	
 	Follow the install wizard
-		
+
+		- Installation Directory:  `/home/<username>/Digi` (replace <username> with your name
+
+	```
+	rm -rf ~/Downloads/XCTU
+	```
+	
 2. Gurobi
 	
 	- See [Gurobi Installation Instructions](gurobi_installation.md).
@@ -76,13 +80,13 @@ The following code should also be on your machine, but it couldn't be automated 
 
 	```	
 	cd ~
-	mkdir concorde
-	cd ~/concorde 
+	rm -rf concorde
 	wget "http://www.math.uwaterloo.ca/tsp/concorde/downloads/codes/src/co031219.tgz"
 	gunzip co031219.tgz 
 	tar xvf co031219.tar
 	cd concorde 
 	./configure
+	rm ~/co031219.tar
 	```
 
 	**DOES THIS STILL WORK?  WHAT ELSE DID WE DO?**	
@@ -91,8 +95,9 @@ The following code should also be on your machine, but it couldn't be automated 
 5. APM Planner -- See http://ardupilot.org/planner2/docs/installation-for-linux.html
 
 		```
-		mkdir ${HOME}/APM
-		cd ${HOME}/APM
+		cd ~/Downloads
+		mkdir APM
+		cd APM
 		wget "http://firmware.ardupilot.org/Tools/APMPlanner/apm_planner_2.0.24_xenial64.deb"
 		```
 
@@ -110,6 +115,12 @@ The following code should also be on your machine, but it couldn't be automated 
 		sudo dpkg -i apm_planner*.deb
 		```
 
+		```
+		rm -rf ~/Downloads/APM
+		apmplanner2
+		```
+
+
 6. Install Cesium Addons
 
 	- First, clone the `cesium-addons` repository.  This requires that you have access to that repository.
@@ -117,7 +128,7 @@ The following code should also be on your machine, but it couldn't be automated 
 		```
 		cd ~/Downloads
 		rm -rf ~/Downloads/cesium-addons
-		git clone https://github.com/optimatorlab/cesium-addons.git  	
+		git clone https://github.com/optimatorlab/cesium-addons.git
 		```
 
 	- Next, install the `cesium-addons` code:

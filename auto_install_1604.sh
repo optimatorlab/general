@@ -176,6 +176,7 @@ echo "export PYTHONPATH=\${PYTHONPATH}:\$HOME/mavlink" >> ${HOME}/.bashrc
 source ${HOME}/.bashrc
 
 cd ${HOME}
+sudo rm -rf ${HOME}/mavlink
 git clone git://github.com/optimatorlab/mavlink.git --recursive
 cd ${HOME}/mavlink/pymavlink
 sudo python setup.py install
@@ -187,6 +188,7 @@ sudo python setup.py install
 #	http://ardupilot.github.io/MAVProxy/html/getting_started/download_and_installation.html
 # OLD: sudo pip install MAVProxy
 cd ${HOME}
+sudo rm -rf ${HOME}/MAVProxy
 git clone https://github.com/optimatorlab/MAVProxy
 cd ${HOME}/MAVProxy
 sudo python setup.py install
@@ -202,6 +204,7 @@ sudo usermod -a -G dialout ${USER}
 # http://python.dronekit.io/guide/quick_start.html
 # OLD:  sudo pip install dronekit	
 cd ${HOME}
+sudo rm -rf ${HOME}/dronekit-python
 git clone https://github.com/optimatorlab/dronekit-python
 cd ${HOME}/dronekit-python
 sudo python setup.py build
@@ -209,6 +212,7 @@ sudo python setup.py install
 				
 # OLD:  sudo pip install dronekit-sitl
 cd ${HOME}
+sudo rm -rf ${HOME}/dronekit-sitl
 git clone https://github.com/optimatorlab/dronekit-sitl
 cd ${HOME}/dronekit-sitl
 sudo python setup.py build
@@ -220,7 +224,7 @@ sudo python setup.py install
 # 6) Cesium -- 1.38 (Released Oct. 2, 2017):
 # FIXME -- 1.43 is now available (Released March 2018)
 # Delete the cesium directory (if it exists)
-rm -rf ${HOME}/cesium
+sudo rm -rf ${HOME}/cesium
 
 # Copy/install cesium:
 mkdir ${HOME}/cesium
@@ -280,6 +284,7 @@ sudo apt-get install ant
 
 # Get jMAVSim
 cd ${HOME} 
+sudo rm -rf ${HOME}/jMAVSim
 git clone https://github.com/optimatorlab/jMAVSim
 cd ${HOME}/jMAVSim
 git submodule init
@@ -342,19 +347,19 @@ sudo chmod 0640 /etc/postgresql/9.5/main/pg_hba.conf
 
 # Restart the database service:
 sudo service postgresql restart
-sleep 5s
+sleep 15s
 
 # Create a "user" role on psql:
 # hostname:port:database:username:password
-echo "localhost:*:postgres:postgress" >> ${HOME}/.pgpass
+echo "localhost:*:postgres:postgres" >> ${HOME}/.pgpass
 chmod 0600 ${HOME}/.pgpass
-psql -U postgres -w -c "CREATE ROLE 'user' SUPERUSER LOGIN;"
+psql -U postgres -w -c 'CREATE ROLE "user" SUPERUSER LOGIN;'
 rm ${HOME}/.pgpass
 
 # At this point, a role named "user" is created, but there is no database named "user". So, when we write `psql -U user`, it tries to connect to DB "user" (which doesn't exist) through role "user". 
 #
 # Instead of doing this, write `psql -U user postgres`. This will connect to DB "postgres" through role "user".  To avoid writing `psql -U user postgres` everytime we want to login through "user" in the future, we will create a DB named "user". After that, we can write `psql -U user` to login into DB "user" through role "user".
-psql -U user -d postgres -c "CREATE DATABASE 'user';"
+psql -U user -d postgres -c 'CREATE DATABASE "user";'
 #	\q			FIXME -- DO WE NEED THIS?
 
 
@@ -375,6 +380,7 @@ sudo apt-get --yes install mbrola-us2
 
 # Install pyaudio
 cd ${HOME}
+sudo rm -rf ${HOME}/pyaudio
 git clone https://github.com/optimatorlab/pyaudio.git
 cd ${HOME}/pyaudio
 sudo python setup.py install
@@ -397,6 +403,7 @@ sudo python setup.py install
 
 # Blather -- Originally from https://github.com/ajbogh/blather
 cd ${HOME}
+sudo rm -rf ${HOME}/blather
 git clone https://github.com/optimatorlab/blather.git
 
 mkdir ${HOME}/.config/blather
