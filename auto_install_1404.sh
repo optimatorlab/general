@@ -1,5 +1,57 @@
 #!/bin/bash
 
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#
+#	AS OF 3/12/18, THIS SCRIPT IS DEPRECATED
+#
+#	I'M LEAVING IT HERE JUST FOR REFERENCE
+#
+#	PLEASE TAKE A LOOK AT THE 16.04 SCRIPT INSTEAD
+# 
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ===============================================================================
 # File:  auto_install_1404.sh
 #
@@ -36,7 +88,8 @@
 #		Pulling Cesium directly from their releases page.
 #	12/22/17:
 #		Added pyserial.  Should be v3.4 or above now.
-
+#	3/12/18:
+#		THIS SCRIPT IS NOW DEPRECATED
 
 set -e
 
