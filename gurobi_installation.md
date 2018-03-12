@@ -40,12 +40,20 @@
 	grbgetkey xxxxxxxxxxxxxxxxxxxxx
 	```
 
-6. Create the `gurobipy` package, so we can import within Python.  Change the Gurobi path as appropriate:
+6. Create the `gurobipy` package, so we can import within Python.  
 
-	```
-	cd /opt/gurobi751/linux64
-	sudo python setup.py install
-	```
+	- First, let's make sure we aren't in a Python virtual environment:
+	
+		```
+		deactivate
+		```
+		
+	- Now, build the `gurobipy` package.  Change the Gurobi path below as appropriate:
+
+		```
+		cd /opt/gurobi751/linux64
+		sudo python setup.py install
+		```
 	
 7. Test:
 
