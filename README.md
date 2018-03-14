@@ -58,9 +58,9 @@ The following code should also be on your machine, but it couldn't be automated 
 	./xctu
 	```
 	
-	Follow the install wizard
+	- Follow the install wizard
 
-		- Installation Directory:  `/home/<username>/Digi` (replace <username> with your name
+	- When prompted, change the Installation Directory:  `/home/<username>/Digi` (replace <username> with your name)
 
 	```
 	rm -rf ~/Downloads/XCTU
@@ -78,47 +78,47 @@ The following code should also be on your machine, but it couldn't be automated 
 
 	- These steps are adapted from http://www.math.uwaterloo.ca/tsp/concorde/DOC/README.html
 
-	```	
-	cd ~
-	rm -rf concorde
-	wget "http://www.math.uwaterloo.ca/tsp/concorde/downloads/codes/src/co031219.tgz"
-	gunzip co031219.tgz 
-	tar xvf co031219.tar
-	cd concorde 
-	./configure
-	rm ~/co031219.tar
-	```
+		```	
+		cd ~
+		rm -rf concorde
+		wget "http://www.math.uwaterloo.ca/tsp/concorde/downloads/codes/src/co031219.tgz"
+		gunzip co031219.tgz 
+		tar xvf co031219.tar
+		cd concorde 
+		./configure
+		rm ~/co031219.tar
+		```
 
 	**DOES THIS STILL WORK?  WHAT ELSE DID WE DO?**	
 
 
 5. APM Planner -- See http://ardupilot.org/planner2/docs/installation-for-linux.html
 
-		```
-		cd ~/Downloads
-		mkdir APM
-		cd APM
-		wget "http://firmware.ardupilot.org/Tools/APMPlanner/apm_planner_2.0.24_xenial64.deb"
-		```
+	```
+	cd ~/Downloads
+	mkdir APM
+	cd APM
+	wget "http://firmware.ardupilot.org/Tools/APMPlanner/apm_planner_2.0.24_xenial64.deb"
+	```
 
-		```	
-		sudo dpkg -i apm_planner*.deb
-		```
-		
-		If the installation fails due to missing dependencies:
-		
-		```
-		sudo apt-get -f install
-		```	
+	```	
+	sudo dpkg -i apm_planner*.deb
+	```
+	
+	If the installation fails due to missing dependencies:
+	
+	```
+	sudo apt-get -f install
+	```	
 
-		```
-		sudo dpkg -i apm_planner*.deb
-		```
+	```
+	sudo dpkg -i apm_planner*.deb
+	```
 
-		```
-		rm -rf ~/Downloads/APM
-		apmplanner2
-		```
+	```
+	rm -rf ~/Downloads/APM
+	apmplanner2
+	```
 
 
 6. Install Cesium Addons
