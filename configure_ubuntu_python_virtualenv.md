@@ -1,6 +1,6 @@
 # Configuring our Ubuntu Boxes with Python Virtual Environments
 
-*Updated March 10, 2018*
+*Updated March 12, 2018*
 
 
 - Some of this material comes from https://www.pyimagesearch.com/2017/09/25/configuring-ubuntu-for-deep-learning-with-python/.
@@ -14,6 +14,8 @@
 
 1. **Installing System Packages** -- You need to follow these steps just once.  Afterwards you can create as many virtual environments as you'd like.
 
+	- *Note for Lab Users:*  You do not need to perform this step.  All necessary system packages have already been installed on your machine.  Please skip to the next section.
+	
 2. **Creating Python Virtual Environments** -- Follow these steps each time you want to create a new virtual environment.  These particular steps focus on creating virtualenvs designed for machine learning projects, but can be easily customized for each new project.
 
 3. **Copying or Renaming a Virtual Environment** -- Take a look at this section if you want to rename a virtual environment, or to copy it for a different project.
@@ -25,6 +27,8 @@
 ## 1) Install system packages
 
 These steps should be followed just once (e.g., on a fresh installation of Ubuntu).
+
+- *Note for Lab Users:*  You do not need to perform this step.  All necessary system packages have already been installed on your machine.  Please skip to the next section (creating a python virtual environment).
 
 1. Update apt-get and upgrade existing system packages:
 
@@ -130,6 +134,7 @@ In this section we are creating a virtualenv named "dl4cv".
 		pip install numpy scipy matplotlib scikit-learn pandas pillow
 		pip install mglearn
 		pip install jupyter
+		pip install seaborn statsmodels
 		```
 
 	- Install image processing packages (including openCV):
@@ -150,6 +155,107 @@ In this section we are creating a virtualenv named "dl4cv".
 		pip install keras
 		```
 
+	- Other common packages used in the lab:
+		
+		```
+		pip install future
+		pip install pygame
+		pip install pyserial
+		pip install xbee
+		pip install pyglet
+		pip install netifaces
+		pip install rpy2			# Still valid/useful?
+		```
+
+	- Speech processing packages:
+	
+		```
+		pip install SpeechRecognition		
+		pip install pocketsphinx			
+		```
+
+	- Packages used for pgRouting:
+
+		```
+		pip install psycopg2
+		pip install sympy 
+		pip install nose
+		pip install geopy
+		pip install urllib2
+		pip install json
+		```
+	
+	- Link to PyQt4:
+		
+		**NOTE**: PyQt4 cannot be installed via pip.  Our Ubuntu 16.04 auto installer script installs `python-qt4` via `apt-get`.  
+		
+		Follow the steps below to create symbolic links so you can use `PyQt4` within your virtual environments.  Modify the paths as appropriate.  These steps assume our our Python 2.7 virtualenv is named `olab2`.
+		
+		```
+		# Create symbolic link of PyQt4 to your virtual env 
+		ln -s /usr/lib/python2.7/dist-packages/PyQt4/ ~/.virtualenvs/olab2/lib/python2.7/site-packages/
+		```
+		
+		```
+		# Create symbolic link of sip.so to your virtual env
+		ln -s /usr/lib/python2.7/dist-packages/sip.so ~/.virtualenvs/olab2/lib/python2.7/site-packages/
+		```
+		
+		```
+		# Test it out:
+		python
+		>>> from PyQt4 import QtGui, QtCore
+		```
+
+	- Link to Gurobipy:
+		
+		**NOTE**:  See the [Gurobi Installation Guide](gurobi_installation.md) for general installation instructions. 
+		
+		The code below assumes that (1) we have a Python 2.7 virtual environment named `olab2` with a particular path, and (2) we have installed Gurobi 7.5.1 and have found the path to `gurobipy.so`.  **You may need to change these paths as appropriate for your setup.**
+	
+		```
+		workon olab2
+		cd ~/.virtualenvs/olab2/lib/python2.7/site-packages/	
+		ln -s /opt/gurobi751/linux64/lib/python2.7/gurobipy.so	
+		```
+
+		```
+		# Test it out:
+		python
+		>>> import gurobipy
+		```
+	
+	- Link to rospy:
+
+		**NOTE**: This worked for a (possibly old?) installation in Ubuntu 14.04:
+
+		```	
+		ln -s /usr/lib/python2.7/dist-packages/rospkg/ 		~/.virtualenvs/olab2/lib/python2.7/site-packages/
+		ln -s /usr/lib/python2.7/dist-packages/catkin_pkg/ 	~/.virtualenvs/olab2/lib/python2.7/site-packages/
+		```
+
+	- Link to pymavlink/mavutil:
+
+		**NOTE**: This worked for a (possibly old?) installation in Ubuntu 14.04:
+
+		```
+			/home/murray/mavlink/		???
+			/home/murray/mavlink/pymavlink/		???
+		```
+		
+		```
+		ln -s /home/murray/.local/lib/python2.7/site-packages/pymavlink-1.1.71-py2.7-linux-x86_64.egg ~/.virtualenvs/olab2/lib/python2.7/site-packages/
+		```
+	
+	- **FIXME** Document how to make these links:
+	
+		- from MAVProxy.modules.lib import mp_module
+		- from MAVProxy.modules.lib import mp_util
+		- from MAVProxy.modules.lib import textconsole
+
+		- from dronekit import connect, VehicleMode, LocationGlobalRelative, LocationGlobal, Command
+
+		- from dronekit_sitl import SITL	
 
 ###	Testing the installation:
 
