@@ -19,6 +19,7 @@
 3. Update `.bashrc` to include Gurobi environment variables:
 
 	```
+	cd ~
 	pico .bashrc
 	```
 	
@@ -30,6 +31,12 @@
 	export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 	```
 
+	Reload the `.bashrc` file:
+	
+	```
+	source .bashrc
+	```
+	
 4. Obtain a free academic license:
 
 	- https://user.gurobi.com/download/licenses/free-academic
@@ -70,6 +77,6 @@
 	
 		```
 		workon olab2
-		cd ~/.virtualenvs/olab2/lib/python2.7/site-packages/	
-		ln -s /opt/gurobi751/linux64/lib/python2.7/gurobipy.so	
+		cd ~/.virtualenvs/olab2/lib/python2.7/site-packages 
+		ln -s /opt/gurobi751/linux64/lib/python2.7/gurobipy.so
 		```
