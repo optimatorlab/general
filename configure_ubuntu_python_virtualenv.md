@@ -101,20 +101,20 @@ These steps should be followed just once (e.g., on a fresh installation of Ubunt
 		
 ## 2) Create a Python Virtual Environment
 
-In this section we are creating a virtualenv named "dl4cv".
+In this section we are referencing virtualenvs named "olab3" (using Python 3) and "olab2" (Python 2).
 
 1. Create the virtual environment:
 
 	- Python 3:
 
 		```
-		mkvirtualenv dl4cv -p python3
+		mkvirtualenv olab3 -p python3
 		```
 
 	- Python 2.7:
 
 		```
-		mkvirtualenv dl4cv -p python2
+		mkvirtualenv olab2 -p python2
 		```
 	
 2. Make sure you're in the virtual environment.  
@@ -122,28 +122,28 @@ In this section we are creating a virtualenv named "dl4cv".
 	When inside a virtualenv, you will see the name of that environment in parenthesis (at the beginning of your command line prompt.  If not:
 
 	```
-	workon dl4cv
+	workon olab3
 	```
 
-3. Install your Python packages
+3. Install your Python packages.  The `--upgrade` flag will make sure you have the latest version, which is helpful if you've already installed a package in your virtualenv.
 
 	- We'll start with some basics:
 		
 		```
-		pip install ipython
-		pip install numpy scipy matplotlib scikit-learn pandas pillow
-		pip install mglearn
-		pip install jupyter
-		pip install seaborn statsmodels
+		pip install --upgrade ipython
+		pip install --upgrade numpy scipy matplotlib scikit-learn pandas pillow
+		pip install --upgrade mglearn
+		pip install --upgrade jupyter
+		pip install --upgrade seaborn statsmodels
 		```
 
 	- Install image processing packages (including openCV):
 		
 		```
-		pip install imutils h5py requests progressbar2
-		pip install scikit-image
-		pip install opencv-python
-		pip install opencv-contrib-python
+		pip install --upgrade imutils h5py requests progressbar2
+		pip install --upgrade scikit-image
+		pip install --upgrade opencv-python
+		pip install --upgrade opencv-contrib-python
 		```
 
 		**NOTE**:  If you wish to compile openCV yourself (not necessary unless you need a version not available via pip), see the end of this document for the gory details.
@@ -151,38 +151,36 @@ In this section we are creating a virtualenv named "dl4cv".
 	- Install Keras and TensorFlow:
 	
 		```
-		pip install tensorflow
-		pip install keras
+		pip install --upgrade tensorflow
+		pip install --upgrade keras
 		```
 
 	- Other common packages used in the lab:
 		
 		```
-		pip install future
-		pip install pygame
-		pip install pyserial
-		pip install xbee
-		pip install pyglet
-		pip install netifaces
-		pip install rpy2			# Still valid/useful?
+		pip install --upgrade future
+		pip install --upgrade pygame
+		pip install --upgrade pyserial
+		pip install --upgrade xbee
+		pip install --upgrade pyglet
+		pip install --upgrade netifaces
+		pip install --upgrade rpy2			# Still valid/useful?  Does NOT work for Python 2	
 		```
 
 	- Speech processing packages:
 	
 		```
-		pip install SpeechRecognition		
-		pip install pocketsphinx			
+		pip install --upgrade SpeechRecognition		
+		pip install --upgrade pocketsphinx			
 		```
 
 	- Packages used for pgRouting:
 
 		```
-		pip install psycopg2
-		pip install sympy 
-		pip install nose
-		pip install geopy
-		pip install urllib2
-		pip install json
+		pip install --upgrade psycopg2
+		pip install --upgrade sympy 
+		pip install --upgrade nose
+		pip install --upgrade geopy
 		```
 	
 	- Link to PyQt4:
@@ -283,7 +281,7 @@ In this section we are creating a virtualenv named "dl4cv".
 	- First, open python:
 	
 		```
-		workon dl4cv
+		workon olab3
 		python
 		```
 	
@@ -317,7 +315,7 @@ In this section we are creating a virtualenv named "dl4cv".
 3. Check Jupyter:
 
 	```
-	workon dl4cv
+	workon olab3
 	jupyter notebook
 	```
 
@@ -329,7 +327,21 @@ In this section we are creating a virtualenv named "dl4cv".
 	deactivate
 	```
 	
-	Now, the command line prompt should no longer begin with `(dl4cv)`.
+	Now, the command line prompt should no longer begin with `(olab3)`.
+
+5. Using aliases as a shortcut to your virtual environments:
+
+	- Open your `.bashrc` file for editing:
+		```
+		pico ~/.bashrc
+		```
+	
+	- Add the following lines to `.bashrc` (assuming we have virtual environments named `olab2` and `olab3`):
+		```
+		# Create aliases for python virtual environments
+		alias olab2='workon olab2'
+		alias olab3='workon olab3'
+		```
 
 ---
 
@@ -432,7 +444,7 @@ These instructions come from https://www.pyimagesearch.com/2017/09/25/configurin
 	**NOTE: I have Python 3.4 on my machine.**  Change paths below as appropriate.
 
 	```
-	cd ~/.virtualenvs/dl4cv/lib/python3.4/site-packages/
+	cd ~/.virtualenvs/olab3/lib/python3.4/site-packages/
 	ln -s /usr/local/lib/python3.4/site-packages/cv2.cpython-34m.so cv2.so
 	cd ~
 	```
