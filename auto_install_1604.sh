@@ -54,6 +54,8 @@
 #		Modified version of Cesium -- FIXME
 #	3/16/18:
 #		Added R/RStudio
+#	3/26/18:
+# 		Added retext, OCR, TeXstudio, Sublime Text, Chrome, and QGIS
 
 set -e
 
@@ -102,8 +104,40 @@ sudo apt-get --yes install geany
 sudo apt-get --yes install gimp
 sudo apt-get --yes install meld
 sudo apt-get --yes install kazam
+sudo apt-get --yes install retext
 
+# Python OCR
+sudo apt-get install tesseract-ocr
+
+# TeXstudio
+# Open with "texstudio"
 sudo apt-get update
+sudo apt-get install texlive-full
+sudo apt-get install texstudio
+
+# Sublime text
+# https://www.sublimetext.com/docs/3/linux_repositories.html
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+sudo apt-get install apt-transport-https
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+sudo apt-get update
+sudo apt-get install sublime-text
+
+# Chrome
+# https://askubuntu.com/questions/79280/how-to-install-chrome-browser-properly-via-command-line
+sudo apt-get install libxss1 libappindicator1 libindicator7
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome*.deb
+# If error messages pop up after running the command sudo dpkg -i google-chrome*.deb then run the command
+# sudo apt-get install -f
+# and then re-run the previous command. The error messages mentioned should include something similar to
+
+# QGIS
+# https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu
+echo "deb https://qgis.org/debian jessie main" | sudo tee /etc/apt/sources.list.d
+echo "deb-src https://qgis.org/debian jessie main" | sudo tee /etc/apt/sources.list.d
+sudo apt-get update
+sudo apt-get install qgis python-qgis qgis-plugin-grass
 
 
 # R and RStudio:
