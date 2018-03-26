@@ -144,6 +144,7 @@ In this section we are referencing virtualenvs named "olab3" (using Python 3) an
 		pip install --upgrade scikit-image
 		pip install --upgrade opencv-python
 		pip install --upgrade opencv-contrib-python
+		pip install --upgrade moviepy
 		```
 
 		**NOTE**:  If you wish to compile openCV yourself (not necessary unless you need a version not available via pip), see the end of this document for the gory details.
@@ -182,6 +183,35 @@ In this section we are referencing virtualenvs named "olab3" (using Python 3) an
 		pip install --upgrade nose
 		pip install --upgrade geopy
 		```
+	- Geocoding:
+		
+		```
+		pip install --upgrade geocoder
+		```
+		
+		See http://geocoder.readthedocs.io/providers/OpenStreetMap.html
+
+		```
+		>>> import geocoder
+		>>> g = geocoder.osm('Amherst, NY')
+		>>> g.json
+		>>> g.json['lat']
+		>>> g.json['lng']
+		```
+
+	- Wikipedia:
+
+		```
+		pip install --upgrade wikipedia
+		```
+		
+		See https://wikipedia.readthedocs.io/en/latest/code.html#module-wikipedia
+
+		```
+		>>> import wikipedia
+		>>> print(wikipedia.summary("university at buffalo"))
+		```
+
 	
 	- Link to PyQt4:
 		
