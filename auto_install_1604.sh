@@ -136,8 +136,8 @@ sudo dpkg -i google-chrome*.deb
 
 # QGIS
 # https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu
-echo "deb https://qgis.org/debian jessie main" | sudo tee /etc/apt/sources.list.d
-echo "deb-src https://qgis.org/debian jessie main" | sudo tee /etc/apt/sources.list.d
+echo "deb https://qgis.org/debian jessie main" | sudo tee /etc/apt/sources.list
+echo "deb-src https://qgis.org/debian jessie main" | sudo tee /etc/apt/sources.list
 sudo apt-get update
 sudo apt-get install qgis python-qgis qgis-plugin-grass
 
