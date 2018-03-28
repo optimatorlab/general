@@ -56,6 +56,8 @@
 #		Added R/RStudio
 #	3/26/18:
 # 		Added retext, OCR, TeXstudio, Sublime Text, Chrome, and QGIS
+#	3/28/18:
+#		Hard-coded xenial (replaced lsb_release)
 
 set -e
 
@@ -107,7 +109,7 @@ sudo apt-get --yes install kazam
 sudo apt-get --yes install retext
 
 # Python OCR
-sudo apt-get install tesseract-ocr
+sudo apt-get --yes install tesseract-ocr
 
 # TeXstudio
 # Open with "texstudio"
@@ -142,7 +144,8 @@ sudo apt-get install qgis python-qgis qgis-plugin-grass
 
 # R and RStudio:
 # See https://www.r-bloggers.com/how-to-install-r-on-linux-ubuntu-16-04-xenial-xerus/
-sudo echo "deb http://cran.rstudio.com/bin/linux/ubuntu $(lsb_release -sc)/" | sudo tee -a /etc/apt/sources.list
+# sudo echo "deb http://cran.rstudio.com/bin/linux/ubuntu $(lsb_release -sc)/" | sudo tee -a /etc/apt/sources.list
+sudo echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" | sudo tee -a /etc/apt/sources.list
 gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
 gpg -a --export E084DAB9 | sudo apt-key add -
 sudo apt-get update
@@ -178,11 +181,13 @@ echo "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3" >> ${HOME}/.bashrc
 echo "source /usr/local/bin/virtualenvwrapper.sh" >> ${HOME}/.bashrc
 source ${HOME}/.bashrc
 
+sudo apt-get clean
 
 # -----------------------------------------
 # 1) ROS Kinetic
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-	
+#sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu xenial main" > /etc/apt/sources.list.d/ros-latest.list'
+		
 sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
 	
 sudo apt-get update
@@ -213,6 +218,7 @@ echo "source ~/catkin_ws/devel/setup.bash" >> ${HOME}/.bashrc
 source ${HOME}/catkin_ws/devel/setup.bash
 source ${HOME}/.bashrc		
 
+sudo apt-get clean
 
 # -----------------------------------------
 # 2) Rosbridge
@@ -233,6 +239,7 @@ git clone git://github.com/optimatorlab/mavlink.git --recursive
 cd ${HOME}/mavlink/pymavlink
 sudo python setup.py install
 
+sudo apt-get clean
 
 # -----------------------------------------
 # 4) MAVproxy 
@@ -250,6 +257,7 @@ sudo adduser ${USER} dialout
 # If you have trouble connecting Pixhawk, try the following:
 sudo usermod -a -G dialout ${USER}
 
+sudo apt-get clean
 
 # -----------------------------------------
 # 5) Dronekit
@@ -271,6 +279,7 @@ sudo python setup.py build
 sudo python setup.py install
 
 
+sudo apt-get clean
 
 # -----------------------------------------
 # 6) Cesium -- 1.38 (Released Oct. 2, 2017):
@@ -325,6 +334,7 @@ git clone https://github.com/optimatorlab/dials_gauges.git
 #git clone https://github.com/optimatorlab/dials_gauges.git
 # ===============================================================================================
 
+sudo apt-get clean
 
 # -----------------------------------------
 # 7) jMAVsim
@@ -370,7 +380,8 @@ sudo apt-get remove modemmanager
 # 10) pgRouting
 
 # FIXME -- NOT SURE WHICH FILE IS CORRECT:
-sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+# sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 # sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list'
 
 wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
