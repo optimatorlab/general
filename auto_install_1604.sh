@@ -63,7 +63,7 @@ set -e
 
 # Store the present working directory.
 # We'll use this later when copying psql config file.
-myPWD=$PWD
+myPWD=${PWD}
 
 
 # Prelims
@@ -136,8 +136,10 @@ sudo dpkg -i google-chrome*.deb
 
 # QGIS
 # https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu
-echo "deb https://qgis.org/ubuntu xenial main" | sudo tee /etc/apt/sources.list
-echo "deb-src https://qgis.org/ubuntu xenial main" | sudo tee /etc/apt/sources.list
+#echo "deb https://qgis.org/ubuntu xenial main" | sudo tee /etc/apt/sources.list
+#echo "deb-src https://qgis.org/ubuntu xenial main" | sudo tee /etc/apt/sources.list
+echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main" | sudo tee /etc/apt/sources.list 
+echo "deb-src http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main" | sudo tee /etc/apt/sources.list
 sudo apt-get update
 sudo apt-get --yes install qgis python-qgis qgis-plugin-grass
 
@@ -232,6 +234,8 @@ echo "" >> ${HOME}/.bashrc
 echo "# Add mavlink to PYTHONPATH" >> ${HOME}/.bashrc
 echo "export PYTHONPATH=\${PYTHONPATH}:\$HOME/mavlink" >> ${HOME}/.bashrc
 source ${HOME}/.bashrc
+
+sudo apt-get --yes install python-future
 
 cd ${HOME}
 sudo rm -rf ${HOME}/mavlink
@@ -379,6 +383,7 @@ sudo apt-get remove modemmanager
 # -----------------------------------------
 # 10) pgRouting
 
+
 # FIXME -- NOT SURE WHICH FILE IS CORRECT:
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 # sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
@@ -386,12 +391,12 @@ sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main"
 
 wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
 sudo apt-get update
-sudo apt-get install postgresql-9.5-postgis-2.2 pgadmin3 postgresql-contrib-9.5
-sudo apt-get install postgresql-9.5-pgrouting
+sudo apt-get --yes install postgresql-9.5-postgis-2.2 pgadmin3 postgresql-contrib-9.5
+sudo apt-get --yes install postgresql-9.5-pgrouting
 
 sudo apt-add-repository -y ppa:georepublic/pgrouting
 sudo apt-get update
-sudo apt-get install osm2pgrouting
+sudo apt-get --yes install osm2pgrouting
 
 # Set password:
 sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
@@ -401,7 +406,8 @@ sudo mv /etc/postgresql/9.5/main/pg_hba.conf /etc/postgresql/9.5/main/pg_hba.con
 
 # Replace `pg_hba.conf` with the version downloaded from github:
 # FIXME -- UPLOAD A CONFIG FILE FOR 9.5
-sudo cp ${myPWD}/pg_hba.conf.template /etc/postgresql/9.5/main/pg_hba.conf
+cd ${HOME}
+sudo cp ${myPWD}/pg_hba.conf /etc/postgresql/9.5/main/pg_hba.conf
 
 # Ensure proper permissions and ownership:
 # -rw-r----- 1 postgres postgres  4651 Nov 27  2016 pg_hba.conf
