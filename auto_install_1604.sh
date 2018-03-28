@@ -114,8 +114,8 @@ sudo apt-get --yes install tesseract-ocr
 # TeXstudio
 # Open with "texstudio"
 sudo apt-get update
-sudo apt-get install texlive-full
-sudo apt-get install texstudio
+sudo apt-get --yes install texlive-full
+sudo apt-get --yes install texstudio
 
 # Sublime text
 # https://www.sublimetext.com/docs/3/linux_repositories.html
@@ -123,7 +123,7 @@ wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add
 sudo apt-get install apt-transport-https
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 sudo apt-get update
-sudo apt-get install sublime-text
+sudo apt-get --yes install sublime-text
 
 # Chrome
 # https://askubuntu.com/questions/79280/how-to-install-chrome-browser-properly-via-command-line
@@ -136,10 +136,10 @@ sudo dpkg -i google-chrome*.deb
 
 # QGIS
 # https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu
-echo "deb https://qgis.org/debian jessie main" | sudo tee /etc/apt/sources.list
-echo "deb-src https://qgis.org/debian jessie main" | sudo tee /etc/apt/sources.list
+echo "deb https://qgis.org/ubuntu xenial main" | sudo tee /etc/apt/sources.list
+echo "deb-src https://qgis.org/ubuntu xenial main" | sudo tee /etc/apt/sources.list
 sudo apt-get update
-sudo apt-get install qgis python-qgis qgis-plugin-grass
+sudo apt-get --yes install qgis python-qgis qgis-plugin-grass
 
 
 # R and RStudio:
@@ -149,8 +149,8 @@ sudo echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" | sudo tee -a /
 gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
 gpg -a --export E084DAB9 | sudo apt-key add -
 sudo apt-get update
-sudo apt-get install r-base r-base-dev
-sudo apt-get install gdebi-core
+sudo apt-get --yes install r-base r-base-dev
+sudo apt-get --yes install gdebi-core
 
 # FIXME:  This is for 16.04 (xenial) only.
 # See https://www.rstudio.com/products/rstudio/download/#download for the latest versions of RStudio.
