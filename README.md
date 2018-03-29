@@ -141,6 +141,12 @@ The following code should also be on your machine, but it couldn't be automated 
 		rm -rf ~/Downloads/cesium-addons
 		```		
 
+---
+
+## Configuring pgRouting
+
+- The auto-installer installs the necessary pgRouting packages.
+- However, you'll need to [follow these instructions to add data to your database](pgrouting_installation.md).
 
 ---
  
