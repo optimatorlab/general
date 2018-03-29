@@ -58,6 +58,9 @@
 # 		Added retext, OCR, TeXstudio, Sublime Text, Chrome, and QGIS
 #	3/28/18:
 #		Hard-coded xenial (replaced lsb_release)
+#	3/29/18:
+#		Fixed QGIS installation.
+#		Fixed psql installation.
 
 set -e
 
@@ -65,6 +68,12 @@ set -e
 # We'll use this later when copying psql config file.
 myPWD=${PWD}
 
+# Create the user's "Projects" directory:
+mkdir -p ${HOME}/Projects
+
+# Copy wallpaper to a new "olab" directory:
+mkdir -p ${HOME}/olab
+cp ${myPWD}/optimator_lab_transparency_small.png ${HOME}/olab/optimator_lab_transparency_small.png
 
 # Prelims
 cd ${HOME}
@@ -120,14 +129,14 @@ sudo apt-get --yes install texstudio
 # Sublime text
 # https://www.sublimetext.com/docs/3/linux_repositories.html
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-sudo apt-get install apt-transport-https
+sudo apt-get --yes install apt-transport-https
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 sudo apt-get update
 sudo apt-get --yes install sublime-text
 
 # Chrome
 # https://askubuntu.com/questions/79280/how-to-install-chrome-browser-properly-via-command-line
-sudo apt-get install libxss1 libappindicator1 libindicator7
+sudo apt-get --yes install libxss1 libappindicator1 libindicator7
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome*.deb
 # If error messages pop up after running the command sudo dpkg -i google-chrome*.deb then run the command
@@ -136,10 +145,9 @@ sudo dpkg -i google-chrome*.deb
 
 # QGIS
 # https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu
-#echo "deb https://qgis.org/ubuntu xenial main" | sudo tee /etc/apt/sources.list
-#echo "deb-src https://qgis.org/ubuntu xenial main" | sudo tee /etc/apt/sources.list
-echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main" | sudo tee /etc/apt/sources.list 
-echo "deb-src http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu xenial main" | sudo tee /etc/apt/sources.list
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
+echo "deb https://qgis.org/debian xenial main" | sudo tee -a /etc/apt/sources.list
+echo "deb-src https://qgis.org/debian xenial main" | sudo tee -a /etc/apt/sources.list
 sudo apt-get update
 sudo apt-get --yes install qgis python-qgis qgis-plugin-grass
 
@@ -343,10 +351,10 @@ sudo apt-get clean
 # -----------------------------------------
 # 7) jMAVsim
 # Install Java SDK (v1.7.0_95):
-sudo apt-get install openjdk-8-jdk
+sudo apt-get --yes install openjdk-8-jdk
 
 # Install ant (v1.9.3):
-sudo apt-get install ant
+sudo apt-get --yes install ant
 
 # Get jMAVSim
 cd ${HOME} 
@@ -420,17 +428,15 @@ sleep 15s
 
 # Create a "user" role on psql:
 # hostname:port:database:username:password
-echo "localhost:*:postgres:postgres" >> ${HOME}/.pgpass
-chmod 0600 ${HOME}/.pgpass
-psql -U postgres -w -c 'CREATE ROLE "user" SUPERUSER LOGIN;'
-rm ${HOME}/.pgpass
+# echo "localhost:*:postgres:postgres" >> ${HOME}/.pgpass
+# chmod 0600 ${HOME}/.pgpass
+sudo PGPASSWORD="postgres" -u postgres psql -c 'CREATE ROLE "user" SUPERUSER LOGIN;'
+# rm ${HOME}/.pgpass
 
 # At this point, a role named "user" is created, but there is no database named "user". So, when we write `psql -U user`, it tries to connect to DB "user" (which doesn't exist) through role "user". 
 #
 # Instead of doing this, write `psql -U user postgres`. This will connect to DB "postgres" through role "user".  To avoid writing `psql -U user postgres` everytime we want to login through "user" in the future, we will create a DB named "user". After that, we can write `psql -U user` to login into DB "user" through role "user".
 psql -U user -d postgres -c 'CREATE DATABASE "user";'
-#	\q			FIXME -- DO WE NEED THIS?
-
 
 
 # ---------------------------------
