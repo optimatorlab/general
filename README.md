@@ -74,7 +74,32 @@ The following code should also be on your machine, but it couldn't be automated 
 	
 	- Visit https://slack.com/downloads/linux and follow the installation instructions. 
 		
-4. Concorde	
+4. Install Cesium Addons
+
+	- First, clone the `cesium-addons` repository.  This requires that you have access to that repository.
+		
+		```
+		cd ~/Downloads
+		rm -rf ~/Downloads/cesium-addons
+		git clone https://github.com/optimatorlab/cesium-addons.git
+		```
+
+	- Next, install the `cesium-addons` code:
+		
+		```
+		cd ~/Downloads/cesium-addons
+		chmod +x cesium-addons_install.sh
+		./cesium-addons_install.sh
+		cd ~/Downloads
+		rm -rf ~/Downloads/cesium-addons
+		```		
+
+---
+
+### Optional Packages
+These packages are optional.  Unless you are instructed to do so, it is recommended that you **do not** install these packages:
+
+1. Concorde	
 
 	- These steps are adapted from http://www.math.uwaterloo.ca/tsp/concorde/DOC/README.html
 
@@ -92,7 +117,7 @@ The following code should also be on your machine, but it couldn't be automated 
 	**DOES THIS STILL WORK?  WHAT ELSE DID WE DO?**	
 
 
-5. APM Planner -- See http://ardupilot.org/planner2/docs/installation-for-linux.html
+2. APM Planner -- See http://ardupilot.org/planner2/docs/installation-for-linux.html
 
 	```
 	cd ~/Downloads
@@ -120,28 +145,13 @@ The following code should also be on your machine, but it couldn't be automated 
 	apmplanner2
 	```
 
-
-6. Install Cesium Addons
-
-	- First, clone the `cesium-addons` repository.  This requires that you have access to that repository.
-		
-		```
-		cd ~/Downloads
-		rm -rf ~/Downloads/cesium-addons
-		git clone https://github.com/optimatorlab/cesium-addons.git
-		```
-
-	- Next, install the `cesium-addons` code:
-		
-		```
-		cd ~/Downloads/cesium-addons
-		chmod +x cesium-addons_install.sh
-		./cesium-addons_install.sh
-		cd ~/Downloads
-		rm -rf ~/Downloads/cesium-addons
-		```		
-
 ---
+
+## Configuring Python Virtual Environments
+
+- Please see the [python virtual environment instructions](configure_ubuntu_python_virtualenv.md).
+
+--- 
 
 ## Configuring pgRouting
 
@@ -149,6 +159,7 @@ The following code should also be on your machine, but it couldn't be automated 
 - However, you'll need to [follow these instructions to add data to your database](pgrouting_installation.md).
 
 ---
+
  
 ## Notes
 - As of 3/12/18, the [manual installation instructions](manual_install.md) are deprecated.  I'm leaving the link here just for reference.

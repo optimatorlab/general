@@ -1,6 +1,6 @@
 # Configuring our Ubuntu Boxes with Python Virtual Environments
 
-*Updated March 12, 2018*
+*Updated August 20, 2018*
 
 
 - Some of this material comes from https://www.pyimagesearch.com/2017/09/25/configuring-ubuntu-for-deep-learning-with-python/.
@@ -14,7 +14,7 @@
 
 1. **Installing System Packages** -- You need to follow these steps just once.  Afterwards you can create as many virtual environments as you'd like.
 
-	- *Note for Lab Users:*  You do not need to perform this step.  All necessary system packages have already been installed on your machine.  Please skip to the next section.
+	- **Note for Lab Users:**  You do not need to perform this step.  All necessary system packages have already been installed on your machine.  **Please skip to the next section**.
 	
 2. **Creating Python Virtual Environments** -- Follow these steps each time you want to create a new virtual environment.  These particular steps focus on creating virtualenvs designed for machine learning projects, but can be easily customized for each new project.
 

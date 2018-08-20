@@ -3,7 +3,7 @@
 # ===============================================================================
 # File:  auto_install_1604.sh
 #
-# Updated 3/12/2018 by Chase Murray
+# Updated 8/20/2018 by Chase Murray
 #
 # NOTES:
 #	* This script installs the "base" software for students in the lab running
@@ -61,6 +61,12 @@
 #	3/29/18:
 #		Fixed QGIS installation.
 #		Fixed psql installation.
+#	8/20/18:
+#		Using latest version of node.js
+#		pymavlink is no longer available from mavlink repo.  
+#			I tried using ArduPilot repo (forked to our repo), but that failed.
+#			Now using sudo pip.
+#		Added installation of osrm-backend
 
 set -e
 
@@ -238,18 +244,30 @@ sudo apt-get --yes install ros-kinetic-rosbridge-suite
 
 # -----------------------------------------
 # 3) pymavlink
-echo "" >> ${HOME}/.bashrc
-echo "# Add mavlink to PYTHONPATH" >> ${HOME}/.bashrc
-echo "export PYTHONPATH=\${PYTHONPATH}:\$HOME/mavlink" >> ${HOME}/.bashrc
-source ${HOME}/.bashrc
+# REMOVED 8/20/18:
+# echo "" >> ${HOME}/.bashrc
+# echo "# Add mavlink to PYTHONPATH" >> ${HOME}/.bashrc
+# echo "export PYTHONPATH=\${PYTHONPATH}:\$HOME/mavlink" >> ${HOME}/.bashrc
+# source ${HOME}/.bashrc
 
 sudo apt-get --yes install python-future
 
-cd ${HOME}
-sudo rm -rf ${HOME}/mavlink
-git clone git://github.com/optimatorlab/mavlink.git --recursive
-cd ${HOME}/mavlink/pymavlink
-sudo python setup.py install
+# REMOVED 8/20/18:
+# cd ${HOME}
+# sudo rm -rf ${HOME}/mavlink
+# git clone git://github.com/optimatorlab/mavlink.git --recursive
+# cd ${HOME}/mavlink/pymavlink
+# sudo python setup.py install
+
+# TRIED 8/20/18, but FAILED:
+# cd ${HOME}
+# sudo rm -rf ${HOME}/pymavlink
+# git clone git://github.com/optimatorlab/pymavlink.git --recursive
+# cd ${HOME}/pymavlink
+# sudo python setup.py install
+
+# Added 8/20/18:
+sudo pip2 install -U pymavlink
 
 sudo apt-get clean
 
@@ -310,7 +328,8 @@ unzip Cesium-1.43.zip
 sudo apt-get update
 
 cd ${HOME}/cesium
-curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+# curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 npm install
 
@@ -495,6 +514,36 @@ mv ${HOME}/blather/config/blather/language/dic ${HOME}/.config/blather/language/
 
 cd ${HOME}/blather/config/blather/plugins
 mv ${HOME}/blather/config/blather/plugins/thunderbird.sh ${HOME}/.config/blather/plugins/thunderbird.sh
+
+
+# --------------------------------------------
+# Added 8/20/18
+# OSRM Backend
+# https://github.com/Project-OSRM/osrm-backend/wiki/Running-OSRM
+# https://www.digitalocean.com/community/tutorials/how-to-set-up-an-osrm-server-on-ubuntu-14-04
+
+sudo apt-get update
+
+sudo apt-get install build-essential
+sudo apt-get install cmake
+sudo apt-get install pkg-config
+sudo apt-get install libbz2-dev
+sudo apt-get install libxml2-dev
+sudo apt-get install libzip-dev
+sudo apt-get install libboost-all-dev
+sudo apt-get install lua5.2
+sudo apt-get install liblua5.2-dev
+sudo apt-get install libtbb-dev
+
+cd ${HOME}
+git clone https://github.com/Project-OSRM/osrm-backend.git
+cd osrm-backend
+
+mkdir -p build
+cd build
+cmake ..
+cmake --build .
+sudo cmake --build . --target install
 
 
 
