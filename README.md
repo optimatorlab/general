@@ -2,14 +2,15 @@
 Our first repository
 
 ## Versions:
-- ROS Kinetic Kame on Ubuntu 16.04
+- ROS Melodic on Ubuntu 18.04
+- (deprecated) ROS Kinetic on Ubuntu 16.04
 - (deprecated) ROS Indigo Igloo on Ubuntu 14.04
 
 ---
 
 ## Automated Installation Instructions:
 
-1. This assumes that you have already installed Ubuntu 16.04.  Visit https://www.ubuntu.com/download for installation instructions.
+1. This assumes that you have already installed Ubuntu 18.04.  Visit https://www.ubuntu.com/download for installation instructions.
 
 2. You'll need `git` to download the installation package:
 
@@ -25,19 +26,20 @@ Our first repository
 	git clone https://github.com/optimatorlab/general
 	```
 
-4. Run the auto-installer to configure our "base" Ubuntu 16.04 installation:
-
+4. Run the auto-installer to configure our "base" Ubuntu 18.04 installation:
+    - Replace `auto_install_1804.sh` with `auto_install_1804_minimal.sh` for a faster installation.
+	
 	```
 	cd ~/Downloads/general
-	chmod +x auto_install_1604.sh
-	./auto_install_1604.sh
+	chmod +x auto_install_1804.sh
+	./auto_install_1804.sh
 	```
 
 	- If/when prompted to "remove write-protected regular files", you may enter `Y`.
 
 ## Install Additional Packages that can't be Automated:
 
-The following code should also be on your machine, but it couldn't be automated within the `auto_install_1604.sh` script.
+The following code should also be on your machine, but it couldn't be automated within the `auto_install_1804.sh` script.
 
 1. XCTU
 

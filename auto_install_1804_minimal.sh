@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # ===============================================================================
-# File:  auto_install_1804.sh
+# File:  auto_install_1804_minimal.sh
 #
-# Updated 3/20/2020 by Chase Murray
+# Updated 9/23/2020 by Chase Murray
 #
 # NOTES:
 #	* This script installs the "base" software for students in the lab running
@@ -159,9 +159,10 @@ sudo apt-get --yes install tesseract-ocr
 
 # TeXstudio
 # Open with "texstudio"
-sudo apt-get update
-sudo apt-get --yes install texlive-full
-sudo apt-get --yes install texstudio
+# IGNORED FOR MINIMAL INSTALLATION
+# sudo apt-get update
+# sudo apt-get --yes install texlive-full
+# sudo apt-get --yes install texstudio
 
 # Sublime text
 # https://www.sublimetext.com/docs/3/linux_repositories.html
@@ -182,26 +183,29 @@ sudo dpkg -i google-chrome*.deb
 
 # QGIS
 # https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 51F523511C7028C3
-echo "deb https://qgis.org/debian bionic main" | sudo tee -a /etc/apt/sources.list
-echo "deb-src https://qgis.org/debian bionic main" | sudo tee -a /etc/apt/sources.list
-sudo apt-get update
-sudo apt-get install qgis python-qgis qgis-plugin-grass
+# IGNORED FOR MINIMAL INSTALLATION
+# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 51F523511C7028C3
+# echo "deb https://qgis.org/debian bionic main" | sudo tee -a /etc/apt/sources.list
+# echo "deb-src https://qgis.org/debian bionic main" | sudo tee -a /etc/apt/sources.list
+# sudo apt-get update
+# sudo apt-get install qgis python-qgis qgis-plugin-grass
 
 # R and RStudio:
 # See https://www.digitalocean.com/community/tutorials/how-to-install-r-on-ubuntu-18-04
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
-sudo apt update
-sudo apt install r-base
+# IGNORED FOR MINIMAL INSTALLATION
+# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+# sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
+# sudo apt update
+# sudo apt install r-base
 
 
 # FIXME:  This is for 18.04 (bionic) only.
 # See https://www.rstudio.com/products/rstudio/download/#download for the latest versions of RStudio.
-wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.2.5033-amd64.deb
-sudo apt-get install gdebi-core
-sudo gdebi -n rstudio-1.2.5033-amd64.deb
-rm rstudio-1.2.5033-amd64.deb
+# IGNORED FOR MINIMAL INSTALLATION
+# wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.2.5033-amd64.deb
+# sudo apt-get install gdebi-core
+# sudo gdebi -n rstudio-1.2.5033-amd64.deb
+# rm rstudio-1.2.5033-amd64.deb
 
 # FIXME -- Should we remove (uninstall) old versions of pip?
 sudo apt-get purge --auto-remove python-pip	
@@ -424,48 +428,7 @@ sudo apt-get remove modemmanager
 
 # -----------------------------------------
 # 10) pgRouting
-sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
-sudo apt-get update
-sudo apt-get --yes install postgresql-9.5-postgis-2.2 pgadmin3 postgresql-contrib-9.5
-sudo apt-get --yes install postgresql-9.5-pgrouting
-
-# FIXME -- 3/20/20 -- This repo doesn't seem to exist:
-# sudo apt-add-repository -y ppa:georepublic/pgrouting
-sudo apt-get update
-sudo apt-get --yes install osm2pgrouting
-
-# Set password:
-sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
-
-# Make a backup of `pg_hba.conf`:
-sudo mv /etc/postgresql/9.5/main/pg_hba.conf /etc/postgresql/9.5/main/pg_hba.conf.bak
-
-# Replace `pg_hba.conf` with the version downloaded from github:
-# FIXME -- UPLOAD A CONFIG FILE FOR 9.5
-cd ${HOME}
-sudo cp ${myPWD}/pg_hba.conf /etc/postgresql/9.5/main/pg_hba.conf
-
-# Ensure proper permissions and ownership:
-# -rw-r----- 1 postgres postgres  4651 Nov 27  2016 pg_hba.conf
-sudo chown postgres:postgres /etc/postgresql/9.5/main/pg_hba.conf
-sudo chmod 0640 /etc/postgresql/9.5/main/pg_hba.conf
-
-# Restart the database service:
-sudo service postgresql restart
-sleep 15s
-
-# Create a "user" role on psql:
-# hostname:port:database:username:password
-# echo "localhost:*:postgres:postgres" >> ${HOME}/.pgpass
-# chmod 0600 ${HOME}/.pgpass
-sudo PGPASSWORD="postgres" -u postgres psql -c 'CREATE ROLE "user" SUPERUSER LOGIN;'
-# rm ${HOME}/.pgpass
-
-# At this point, a role named "user" is created, but there is no database named "user". So, when we write `psql -U user`, it tries to connect to DB "user" (which doesn't exist) through role "user". 
-#
-# Instead of doing this, write `psql -U user postgres`. This will connect to DB "postgres" through role "user".  To avoid writing `psql -U user postgres` everytime we want to login through "user" in the future, we will create a DB named "user". After that, we can write `psql -U user` to login into DB "user" through role "user".
-psql -U user -d postgres -c 'CREATE DATABASE "user";'
+# IGNORED FOR MINIMAL INSTALLATION
 
 
 # ---------------------------------
@@ -532,73 +495,14 @@ mv ${HOME}/blather/config/blather/plugins/thunderbird.sh ${HOME}/.config/blather
 # OSRM Backend
 # https://github.com/Project-OSRM/osrm-backend/wiki/Running-OSRM
 # https://www.digitalocean.com/community/tutorials/how-to-set-up-an-osrm-server-on-ubuntu-14-04
-
-sudo apt-get update
-
-sudo apt-get install build-essential
-sudo apt-get install cmake
-sudo apt-get install pkg-config
-sudo apt-get install libbz2-dev
-sudo apt-get install libxml2-dev
-sudo apt-get install libzip-dev
-sudo apt-get install libboost-all-dev
-sudo apt-get install lua5.2
-sudo apt-get install liblua5.2-dev
-sudo apt-get install libtbb-dev
-
-cd ${HOME}
-git clone https://github.com/Project-OSRM/osrm-backend.git
-cd osrm-backend
-
-mkdir -p build
-cd build
-cmake ..
-cmake --build .
-sudo cmake --build . --target install
-
-
+# IGNORED FOR MINIMAL INSTALLATION
 
 # --------------------------------------------
 # Added 5/8/20
 # ORS Local
 # These instructions come from https://docs.docker.com/engine/install/ubuntu/.
 # Also see https://github.com/optimatorlab/veroviz/blob/master/ORS_install_instructions.md
-cd ${HOME}
-sudo apt-get update
-
-sudo apt-get install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
-
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-
-sudo groupadd docker
-sudo usermod -aG docker $USER
-newgrp docker
-
-sudo apt install docker-compose
-sudo apt-get install git
-sudo apt-get install openjdk-11-jdk
-cd ${HOME}/Projects
-git clone https://github.com/GIScience/openrouteservice.git
-
-# Test out the default installation:
-# Start the service:
-# 	cd openrouteservice/docker
-# 	docker-compose up -d
-# Check the service status by visiting http://localhost:8080/ors/health.
-
+# IGNORED FOR MINIMAL INSTALLATION
 
 
 # --------------------------------------------
